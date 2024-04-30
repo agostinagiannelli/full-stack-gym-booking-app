@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "target": "ES5",
+        "removeComments": true
+    },
+    "files": ["src/index.ts"]
+}
