@@ -13,12 +13,15 @@ export const getAppointmentByIdService = async (id: number): Promise<IAppointmen
 };
 
 export const scheduleAppointmentService = async (userData: AppointmentDto): Promise<IAppointment> => {
+    const userId = 1
+    const classId = 1
     const newAppointment: IAppointment = {
         id,
         date: userData.date,
         time: userData.time,
-        userId: userData.userId,
-        status: 'active'
+        status: 'active',
+        userId: userId,
+        classId: classId,
     };
     appointments.push(newAppointment);
     id++;
