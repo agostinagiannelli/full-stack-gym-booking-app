@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import { getUsersService, getUserByIdService, registerUserService } from "../services/usersService";
-import { validateCredential } from "../services/credentialsService";
+import { getUsersService, getUserByIdService, registerUserService, loginUserService } from "../services/usersService";
 import { IUser } from "../interfaces/IUser";
 import { UserDto } from "../dtos/UserDto";
 import { CredentialDto } from "../dtos/CredentialDto";
@@ -37,7 +36,7 @@ export const registerUser = async (req: Request, res: Response) => {
 export const loginUser = async (req: Request, res: Response) => {
     try {
         const credential: CredentialDto = req.body;
-        const id = await validateCredential(credential);
+        const id = await loginUserService(credential);
         res.status(200).json({ message: `User with id ${id} logged in` });
     } catch (error: any) {
         res.status(400).json({ message: error.message });

@@ -1,5 +1,5 @@
-import { CredentialDto } from "../dtos/CredentialDto";
 import { ICredential } from "../interfaces/ICredential";
+import { CredentialDto } from "../dtos/CredentialDto";
 
 let credentials: ICredential[] = [];
 let id: number = 1;

@@ -1,7 +1,7 @@
-import { IUser } from "../interfaces/IUser";
-import { ICredential } from "../interfaces/ICredential";
 import { createCredential, validateCredential } from "./credentialsService";
+import { IUser } from "../interfaces/IUser";
 import { UserDto } from "../dtos/UserDto";
+import { CredentialDto } from "../dtos/CredentialDto";
 
 let users: IUser[] = [];
 let id: number = 1;
@@ -41,9 +41,9 @@ export const registerUserService = async (userData: UserDto): Promise<IUser> => 
     }
 };
 
-export const loginUserService = async (credentials: ICredential): Promise<number | string> => {
+export const loginUserService = async (credentialsData: CredentialDto): Promise<number | string> => {
     try {
-        return await validateCredential(credentials);
+        return await validateCredential(credentialsData);
     } catch (error: any) {
         throw new Error(error.message);
     }

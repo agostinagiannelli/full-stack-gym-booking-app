@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
+import { getAppointmentsService, getAppointmentByIdService, scheduleAppointmentService, cancelAppointmentService } from "../services/appointmentService";
 import { IAppointment } from "../interfaces/IAppointment";
-import { cancelAppointmentService, getAppointmentByIdService, getAppointmentsService, scheduleAppointmentService } from "../services/appointmentService";
 import { AppointmentDto } from "../dtos/AppointmentDto";
-
-let appointments: IAppointment[] = [];
-let id: number = 1;
 
 export const getAppointments = async (req: Request, res: Response) => {
     try {

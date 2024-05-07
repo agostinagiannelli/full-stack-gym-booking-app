@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, OneToOne, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { Credential } from "./Credential";
 import { Appointment } from "./Appointment";
 
@@ -14,10 +14,10 @@ export class User {
     @Column({ unique: true, type: 'varchar', length: 200 })
     email: string;
 
-    @Column({ type: 'date', default: new Date()})
+    @Column({ type: 'date', default: new Date() })
     dateOfBirth: Date;
 
-    @Column({ unique: true, type: 'int'})
+    @Column({ unique: true, type: 'int' })
     identityNumber: number;
 
     @OneToOne(() => Credential)

@@ -1,7 +1,7 @@
+import { validateCredential } from "./credentialsService";
 import { IAppointment } from "../interfaces/IAppointment";
 import { Status } from "../interfaces/IAppointment";
 import { AppointmentDto } from "../dtos/AppointmentDto";
-import { validateCredential } from "./credentialsService";
 
 let appointments: IAppointment[] = [];
 let id: number = 1;
