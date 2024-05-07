@@ -16,10 +16,9 @@ export const getUserById = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
         const user: IUser | undefined = await getUserByIdService(Number(id));
-        if (user) res.status(200).json(user);
-        else res.status(404).json({ message: "User not found" });
+        res.status(200).json(user);
     } catch (error: any) {
-        res.status(500).json({ message: error.message });
+        res.status(404).json({ message: error.message });
     }
 };
 
@@ -29,16 +28,16 @@ export const registerUser = async (req: Request, res: Response) => {
         const newUser: IUser = await registerUserService({ name, email, dateOfBirth, identityNumber, username, password });
         res.status(201).json({ message: "User registered", newUser });
     } catch (error: any) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 };
 
 export const loginUser = async (req: Request, res: Response) => {
     try {
-        const credentials = req.body;
-        const id = await validateCredential(credentials);
+        const { username, password } = req.body;
+        const id = await validateCredential({ username, password });
         res.status(200).json({ message: `User with id ${id} logged in` });
     } catch (error: any) {
-        res.status(500).json({ message: error.message });
+        res.status(400).json({ message: error.message });
     }
 };

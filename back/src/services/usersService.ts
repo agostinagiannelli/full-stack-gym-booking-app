@@ -22,15 +22,15 @@ export const getUserByIdService = async (id: number): Promise<IUser | undefined>
     }
 };
 
-export const registerUserService = async (user: UserDto): Promise<IUser> => {
+export const registerUserService = async (userData: UserDto): Promise<IUser> => {
     try {
         const newUser: IUser = {
             id,
-            name: user.name,
-            email: user.email,
-            dateOfBirth: user.dateOfBirth,
-            identityNumber: user.identityNumber,
-            credentialsId: await createCredential({ username: user.username, password: user.password }),
+            name: userData.name,
+            email: userData.email,
+            dateOfBirth: userData.dateOfBirth,
+            identityNumber: userData.identityNumber,
+            credentialsId: await createCredential({ username: userData.username, password: userData.password }),
             appointments: []
         };
         users.push(newUser);

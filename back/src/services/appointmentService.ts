@@ -23,15 +23,17 @@ export const getAppointmentByIdService = async (id: number): Promise<IAppointmen
     }
 };
 
-export const scheduleAppointmentService = async (appointment: AppointmentDto): Promise<IAppointment> => {
+export const scheduleAppointmentService = async (appointmentData: AppointmentDto): Promise<IAppointment> => {
     try {
         const newAppointment: IAppointment = {
             id,
-            date: appointment.date,
-            time: appointment.time,
+            date: appointmentData.date,
+            time: appointmentData.time,
             status: Status.active,
-            trainingId: findTrainingId(appointment.training),
-            userId: await validateCredential({ username: appointment.username, password: appointment.password })
+            trainingId: 1,
+            userId: 1
+            // trainingId: findTrainingId(appointmentData.training),
+            // userId: await validateCredential({ username: appointmentData.username, password: appointmentData.password })
         };
         appointments.push(newAppointment);
         id++;
