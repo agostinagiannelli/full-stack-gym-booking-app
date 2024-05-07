@@ -1,7 +1,6 @@
 import { IAppointment } from "../interfaces/IAppointment";
 import { Status } from "../interfaces/IAppointment";
 import { AppointmentDto } from "../dtos/AppointmentDto";
-import { findTrainingId } from "./trainingService";
 import { validateCredential } from "./credentialsService";
 
 let appointments: IAppointment[] = [];
@@ -30,9 +29,7 @@ export const scheduleAppointmentService = async (appointmentData: AppointmentDto
             date: appointmentData.date,
             time: appointmentData.time,
             status: Status.active,
-            trainingId: 1,
             userId: 1
-            // trainingId: findTrainingId(appointmentData.training),
             // userId: await validateCredential({ username: appointmentData.username, password: appointmentData.password })
         };
         appointments.push(newAppointment);

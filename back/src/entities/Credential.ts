@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({ name: 'credential' })
+@Entity({ name: 'credentials' })
 
 export class Credential {
     @PrimaryGeneratedColumn()
@@ -9,6 +9,6 @@ export class Credential {
     @Column({ unique: true, type: 'varchar', length: 50 })
     username: string;
 
-    @Column({ type: 'text', length: 50 })
+    @Column({ type: 'text', select: false})
     password: string;
 };

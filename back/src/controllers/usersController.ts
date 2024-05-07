@@ -2,13 +2,15 @@ import { Request, Response } from "express";
 import { getUsersService, getUserByIdService, registerUserService } from "../services/usersService";
 import { validateCredential } from "../services/credentialsService";
 import { IUser } from "../interfaces/IUser";
+import { UserDto } from "../dtos/UserDto";
+import { CredentialDto } from "../dtos/CredentialDto";
 
 export const getUsers = async (req: Request, res: Response) => {
     try {
         const users: IUser[] = await getUsersService();
         res.status(200).json(users);
     } catch (error: any) {
-        res.status(500).json({ message: error.message });
+        res.status(404).json({ message: error.message });
     }
 };
 
@@ -24,8 +26,8 @@ export const getUserById = async (req: Request, res: Response) => {
 
 export const registerUser = async (req: Request, res: Response) => {
     try {
-        const { name, email, dateOfBirth, identityNumber, username, password } = req.body;
-        const newUser: IUser = await registerUserService({ name, email, dateOfBirth, identityNumber, username, password });
+        const user: UserDto = req.body;
+        const newUser: IUser = await registerUserService(user);
         res.status(201).json({ message: "User registered", newUser });
     } catch (error: any) {
         res.status(400).json({ message: error.message });
@@ -34,8 +36,8 @@ export const registerUser = async (req: Request, res: Response) => {
 
 export const loginUser = async (req: Request, res: Response) => {
     try {
-        const { username, password } = req.body;
-        const id = await validateCredential({ username, password });
+        const credential: CredentialDto = req.body;
+        const id = await validateCredential(credential);
         res.status(200).json({ message: `User with id ${id} logged in` });
     } catch (error: any) {
         res.status(400).json({ message: error.message });

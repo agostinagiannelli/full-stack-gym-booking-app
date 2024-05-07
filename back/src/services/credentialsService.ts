@@ -25,7 +25,7 @@ export const validateCredential = async (credentialsData: CredentialDto): Promis
             (cred) => cred.username === credentialsData.username && cred.password === credentialsData.password
         );
         if (credential) return credential.id
-        else throw "User not found"
+        else throw new Error("User not found");
     } catch (error: any) {
         throw new Error(error.message);
     }

@@ -1,4 +1,4 @@
-export interface CredentialDto {
-    username: string,
-    password: string
+export class CredentialDto {
+    username: string;
+    password: string;
 };

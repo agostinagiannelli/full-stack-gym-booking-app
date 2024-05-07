@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, OneToOne, OneToMany } from "typeorm";
 import { Credential } from "./Credential";
+import { Appointment } from "./Appointment";
 
-@Entity({ name: 'user' })
+@Entity({ name: 'users' })
 
 export class User {
     @PrimaryGeneratedColumn()
@@ -13,7 +14,7 @@ export class User {
     @Column({ unique: true, type: 'varchar', length: 200 })
     email: string;
 
-    @Column({ type: 'date' })
+    @Column({ type: 'date', default: new Date()})
     dateOfBirth: Date;
 
     @Column({ unique: true, type: 'int'})
@@ -21,5 +22,8 @@ export class User {
 
     @OneToOne(() => Credential)
     @JoinColumn({ name: "credentialsId" })
-    credentials: Credential;
+    credentials: Credential | number;
+
+    @OneToMany(() => Appointment, appointment => appointment.user)
+    appointments: Appointment[];
 };

@@ -1,12 +1,14 @@
 import { Request, Response } from "express";
 import { IAppointment } from "../interfaces/IAppointment";
 import { cancelAppointmentService, getAppointmentByIdService, getAppointmentsService, scheduleAppointmentService } from "../services/appointmentService";
+import { AppointmentDto } from "../dtos/AppointmentDto";
 
 let appointments: IAppointment[] = [];
 let id: number = 1;
 
 export const getAppointments = async (req: Request, res: Response) => {
     try {
+        // const { userId } = req.query;
         const appointments: IAppointment[] = await getAppointmentsService();
         res.status(200).json(appointments);
     } catch (error: any) {
@@ -26,8 +28,8 @@ export const getAppointmentById = async (req: Request, res: Response) => {
 
 export const scheduleAppointment = async (req: Request, res: Response) => {
     try {
-        const { date, time, training, username, password } = req.body;
-        const newAppointment: IAppointment = await scheduleAppointmentService({ date, time, training, username, password });
+        const appointment: AppointmentDto = req.body;
+        const newAppointment: IAppointment = await scheduleAppointmentService(appointment);
         res.status(201).json({ message: "Appointment scheduled", newAppointment });
     } catch (error: any) {
         res.status(400).json({ message: error.message });
