@@ -1,13 +1,16 @@
-import IClass from "./IClass";
-import IUser from "./IUser";
+import { IUser } from "./IUser";
+import { ITraining } from "./ITraining";
 
-interface IAppointment {
+export enum Status {
+    active = 'active',
+    cancelled = 'cancelled'
+};
+
+export interface IAppointment {
     id: number,
     date: Date,
     time: string,
-    status: 'active' | 'cancelled',
+    status: Status,
+    trainingId: ITraining['id'];
     userId: IUser['id'],
-    classId: IClass['id'];
 };
-
-export default IAppointment;

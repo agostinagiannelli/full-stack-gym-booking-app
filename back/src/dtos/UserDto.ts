@@ -1,8 +1,8 @@
-interface UserDto {
+export interface UserDto {
     name: string,
     email: string,
     dateOfBirth: Date,
-    identityNumber: number
+    identityNumber: number,
+    username: string,
+    password: string
 };
-
-export default UserDto;

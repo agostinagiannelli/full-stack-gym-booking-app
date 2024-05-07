@@ -1,7 +1,7 @@
-interface AppointmentDto {
+export interface AppointmentDto {
     date: Date,
     time: string,
-    status: 'active' | 'cancelled',
+    training: string,
+    username: string,
+    password: string
 };
-
-export default AppointmentDto;

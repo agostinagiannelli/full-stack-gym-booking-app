@@ -1,5 +1,5 @@
-import CredentialDto from "../dtos/CredentialDto";
-import ICredential from "../interfaces/ICredential";
+import { CredentialDto } from "../dtos/CredentialDto";
+import { ICredential } from "../interfaces/ICredential";
 
 let credentials: ICredential[] = [];
 let id: number = 1;
@@ -19,12 +19,13 @@ export const createCredential = async (credentialsData: CredentialDto): Promise<
     }
 };
 
-export const validateCredential = async (credentialsData: CredentialDto): Promise<number | string> => {
+export const validateCredential = async (credentialsData: CredentialDto): Promise<number> => {
     try {
         const credential = credentials.find(
             (cred) => cred.username === credentialsData.username && cred.password === credentialsData.password
         );
-        return credential ? credential.id : "User not found";
+        if (credential) return credential.id
+        else throw "User not found";
     } catch (error: any) {
         throw new Error(error.message);
     }

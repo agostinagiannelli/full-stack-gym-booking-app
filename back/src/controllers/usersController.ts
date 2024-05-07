@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { getUsersService, getUserByIdService, registerUserService } from "../services/usersService";
 import { validateCredential } from "../services/credentialsService";
-import IUser from "../interfaces/IUser";
+import { IUser } from "../interfaces/IUser";
 
 export const getUsers = async (req: Request, res: Response) => {
     try {

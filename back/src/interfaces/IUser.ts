@@ -1,7 +1,7 @@
-import IAppointment from "./IAppointment";
-import ICredential from "./ICredential";
+import { ICredential } from "./ICredential";
+import { IAppointment } from "./IAppointment";
 
-interface IUser {
+export interface IUser {
     id: number,
     name: string,
     email: string,
@@ -10,5 +10,3 @@ interface IUser {
     credentialsId: ICredential['id'],
     appointments: IAppointment[]
 };
-
-export default IUser;

@@ -1,6 +1,7 @@
-import ICredential from "../interfaces/ICredential";
-import IUser from "../interfaces/IUser";
+import { IUser } from "../interfaces/IUser";
+import { ICredential } from "../interfaces/ICredential";
 import { createCredential, validateCredential } from "./credentialsService";
+import { UserDto } from "../dtos/UserDto";
 
 let users: IUser[] = [];
 let id: number = 1;
@@ -21,7 +22,7 @@ export const getUserByIdService = async (id: number): Promise<IUser | undefined>
     }
 };
 
-export const registerUserService = async (user: any): Promise<IUser> => {
+export const registerUserService = async (user: UserDto): Promise<IUser> => {
     try {
         const newUser: IUser = {
             id,
