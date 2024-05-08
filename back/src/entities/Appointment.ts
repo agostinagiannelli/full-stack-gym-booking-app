@@ -1,6 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { Status } from "../interfaces/IAppointment";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { User } from "./User";
+
+export enum Status {
+    active = 'active',
+    cancelled = 'cancelled'
+};
 
 @Entity({ name: 'appointments' })
 

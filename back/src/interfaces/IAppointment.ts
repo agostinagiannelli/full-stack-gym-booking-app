@@ -1,9 +1,5 @@
 import { IUser } from "./IUser";
-
-export enum Status {
-    active = 'active',
-    cancelled = 'cancelled'
-};
+import { Status } from "../entities/Appointment";
 
 export interface IAppointment {
     id: number;

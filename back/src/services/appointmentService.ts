@@ -1,6 +1,5 @@
 import { appointmentRepository, userRepository } from "../config/data-source";
-import { Appointment } from "../entities/Appointment";
-import { Status } from "../interfaces/IAppointment";
+import { Appointment, Status } from "../entities/Appointment";
 import { AppointmentDto } from "../dtos/AppointmentDto";
 
 export const getAppointmentsService = async (userId: string): Promise<Appointment[]> => {
