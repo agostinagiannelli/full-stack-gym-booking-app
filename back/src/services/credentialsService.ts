@@ -1,11 +1,11 @@
 import { CredentialDto } from "../dtos/CredentialDto";
 import { credentialRepository } from "../config/data-source";
-import { ICredential } from "../interfaces/ICredential";
 
 export const createCredential = async (credentialsData: CredentialDto): Promise<number> => {
     try {
         const newCredential = await credentialRepository.create(credentialsData);
         await credentialRepository.save(newCredential);
+        if (!newCredential) throw new Error("Credentials not created");
         return newCredential.id;
     } catch (error: any) {
         throw new Error(error.message);
@@ -18,8 +18,8 @@ export const validateCredential = async (credentialsData: CredentialDto): Promis
             where: { username: credentialsData.username, password: credentialsData.password },
             select: ["id"]
         });
-        if (credential) return credential.id
-        else throw new Error("User not found or invalid credentials");
+        if (!credential) throw new Error("User not found or invalid credentials");
+        return credential.id;
     } catch (error: any) {
         throw new Error(error.message);
     }

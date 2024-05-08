@@ -2,8 +2,6 @@ import { appointmentRepository, userRepository } from "../config/data-source";
 import { Appointment } from "../entities/Appointment";
 import { Status } from "../interfaces/IAppointment";
 import { AppointmentDto } from "../dtos/AppointmentDto";
-import { IAppointment } from "../interfaces/IAppointment";
-import { validateCredential } from "./credentialsService";
 
 export const getAppointmentsService = async (userId: string): Promise<Appointment[]> => {
     try {
@@ -11,6 +9,7 @@ export const getAppointmentsService = async (userId: string): Promise<Appointmen
             where: userId ? { user: { id: Number(userId) } } : {},
             relations: ["user"]
         });
+        if (appointments.length === 0) throw new Error("No appointments found");
         return appointments;
     } catch (error: any) {
         throw new Error(error.message);
@@ -19,11 +18,12 @@ export const getAppointmentsService = async (userId: string): Promise<Appointmen
 
 export const getAppointmentByIdService = async (id: number): Promise<Appointment | null> => {
     try {
-        const user = await appointmentRepository.findOne({
+        const appointment = await appointmentRepository.findOne({
             where: { id },
             relations: ["user"]
         });
-        return user;
+        if (appointment === null) throw new Error("Appointment not found");
+        return appointment;
     } catch (error: any) {
         throw new Error(error.message);
     }
@@ -36,10 +36,12 @@ export const scheduleAppointmentService = async (appointmentData: AppointmentDto
         });
         if (!user) throw new Error("User for appointment not found");
         const newAppointment = await appointmentRepository.create({
-            ...appointmentData,
+            date: appointmentData.date,
+            time: appointmentData.time,
             user
         });
         await appointmentRepository.save(newAppointment);
+        if (!newAppointment) throw new Error("Appointment not scheduled");
         return newAppointment;
     } catch (error: any) {
         throw new Error(error.message);
@@ -58,6 +60,7 @@ export const cancelAppointmentService = async (id: number): Promise<Appointment>
             status: Status.cancelled
         });
         await appointmentRepository.save(cancelledAppointment);
+        if (!cancelledAppointment) throw new Error("Appointment not cancelled");
         return cancelledAppointment;
     } catch (error: any) {
         throw new Error(error.message);

@@ -3,13 +3,13 @@ import { userRepository } from "../config/data-source";
 import { User } from "../entities/User";
 import { UserDto } from "../dtos/UserDto";
 import { CredentialDto } from "../dtos/CredentialDto";
-import { IUser } from "../interfaces/IUser";
 
 export const getUsersService = async (): Promise<User[]> => {
     try {
         const users = await userRepository.find({
             relations: ["credentials", "appointments"]
         });
+        if (users.length === 0) throw new Error("No users found");
         return users;
     } catch (error: any) {
         throw new Error(error.message);
@@ -22,6 +22,7 @@ export const getUserByIdService = async (id: number): Promise<User | null> => {
             where: { id },
             relations: ["credentials", "appointments"]
         });
+        if (user === null) throw new Error("User not found");
         return user;
     } catch (error: any) {
         throw new Error(error.message);
@@ -30,24 +31,31 @@ export const getUserByIdService = async (id: number): Promise<User | null> => {
 
 export const registerUserService = async (userData: UserDto): Promise<User> => {
     try {
-        const credentialsId = await createCredential({ username: userData.username, password: userData.password });
+        const credentials = await createCredential({ username: userData.username, password: userData.password });
         const newUser = await userRepository.create({
             name: userData.name,
             email: userData.email,
             dateOfBirth: userData.dateOfBirth,
             identityNumber: userData.identityNumber,
-            credentials: credentialsId
+            credentials
         });
         await userRepository.save(newUser);
+        if (!newUser) throw new Error("User not registered");
         return newUser;
     } catch (error: any) {
         throw new Error(error.message);
     }
 };
 
-export const loginUserService = async (credentialsData: CredentialDto): Promise<number | undefined> => {
+export const loginUserService = async (credentialsData: CredentialDto): Promise<User> => {
     try {
-        return await validateCredential(credentialsData);
+        const userId = await validateCredential(credentialsData);
+        const user = await userRepository.findOne({
+            where: { id: userId },
+            relations: ["credentials", "appointments"]
+        });
+        if (user === null) throw new Error("User not found");
+        return user;
     } catch (error: any) {
         throw new Error(error.message);
     }
