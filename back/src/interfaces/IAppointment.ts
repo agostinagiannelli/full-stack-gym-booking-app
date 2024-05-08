@@ -10,5 +10,5 @@ export interface IAppointment {
     date: Date;
     time: string;
     status: Status;
-    userId: IUser['id'];
+    user: IUser['id'];
 };

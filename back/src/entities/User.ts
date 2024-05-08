@@ -8,10 +8,10 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'varchar', length: 200 })
+    @Column({ type: 'varchar', length: 100 })
     name: string;
 
-    @Column({ unique: true, type: 'varchar', length: 200 })
+    @Column({ unique: true, type: 'varchar', length: 100 })
     email: string;
 
     @Column({ type: 'date', default: new Date() })
@@ -21,9 +21,9 @@ export class User {
     identityNumber: number;
 
     @OneToOne(() => Credential)
-    @JoinColumn({ name: "credentialsId" })
+    @JoinColumn({ name: 'credentialsId' })
     credentials: Credential | number;
 
-    @OneToMany(() => Appointment, appointment => appointment.user)
+    @OneToMany(() => Appointment, (appointment) => appointment.user)
     appointments: Appointment[];
 };

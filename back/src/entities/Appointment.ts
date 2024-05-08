@@ -17,7 +17,6 @@ export class Appointment {
     @Column({ type: 'enum', enum: Status, default: Status.active })
     status: Status;
 
-    @ManyToOne(() => User, user => user.appointments)
-    @JoinColumn({ name: "userId" })
+    @ManyToOne(() => User, (user) => user.appointments)
     user: User;
 };
