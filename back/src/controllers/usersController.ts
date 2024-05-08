@@ -9,7 +9,7 @@ export const getUsers = async (req: Request, res: Response) => {
     try {
         const users: User[] = await getUsersService();
         if (users.length === 0) {
-            res.status(404).json({ message: "Users not found" });
+            res.status(404).json({ message: "No users found" });
             return;
         }
         res.status(200).json(users);
@@ -36,6 +36,10 @@ export const registerUser = async (req: Request, res: Response) => {
     try {
         const user: UserDto = req.body;
         const newUser: User = await registerUserService(user);
+        if (!newUser) {
+            res.status(400).json({ message: "User not registered" });
+            return;
+        }
         res.status(201).json({ message: "User registered", newUser });
     } catch (error: any) {
         res.status(400).json({ message: error.message });
