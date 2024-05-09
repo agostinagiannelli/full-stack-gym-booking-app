@@ -1,0 +1,34 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: #000;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.logoImg {
+    height: 100%;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+}
+
+.navLinks li {
+    margin-right: 1rem;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: #000;
+}
+
+.authLinks {
+    font-size: 0.9rem;
+}
