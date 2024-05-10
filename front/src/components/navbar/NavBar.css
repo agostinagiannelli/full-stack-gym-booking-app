@@ -10,18 +10,26 @@
 }
 
 .navbar-toggler {
-    background-color: transparent;
-    border: 1px solid white;
+    border: 0;
 }
 
 .navbar-toggler-icon {
-    background-image: url("../../assets/menu.png");
+    background-image: url("../../assets/icon-menu.png");
 }
 
 .navbar-toggler:focus {
     text-decoration: none;
     outline: 0;
     box-shadow: none
+}
+
+.btn-close {
+    background: transparent url("../../assets/icon-close.png") center / 2em auto no-repeat;
+    opacity: 100%;
+}
+
+.offcanvas {
+    max-width: 60%
 }
 
 @media (max-width: 991px) {

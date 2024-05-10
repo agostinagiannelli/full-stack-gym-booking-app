@@ -8,8 +8,8 @@ export default function Home() {
             <div className="home-content d-flex justify-content-center align-items-center">
                 <div className="container col-md-8">
                     <div className="text-center">
-                        <h2 className="my-5 home-title">Welcome 👋,<br />get ready to level up your fitness game.</h2>
-                        <button className="btn btn-outline-light btn-lg">Get Started</button>
+                        <h2 className="my-5 home-title">Welcome <span class="waving-hand">👋</span><br />Get ready to level up your fitness game.</h2>
+                        <button className="btn btn-outline-light btn-lg btn-blue">Get Started</button>
                     </div>
                 </div>
             </div>

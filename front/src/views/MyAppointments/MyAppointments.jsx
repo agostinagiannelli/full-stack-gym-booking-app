@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import './MyAppointments.css'
 import NavBar from '../../components/NavBar/NavBar'
 import Appointment from '../../components/Appointment/Appointment'
 
@@ -22,12 +21,12 @@ export default function MyAppointments() {
         <div className="col-md-6">
           <div className="text-center mb-5">
             <h2 className="my-5 page-title">My Appointments</h2>
-            <button className="btn btn-outline-light btn-lg">Save Your Spot</button>
+            <button className="btn btn-outline-light btn-lg btn-blue">Save Your Spot</button>
           </div>
         </div>
       </div>
       <div className="container">
-        <div className="row">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
           {myAppointments.map(({ id, time, date, status }) => (
             <div className="col" key={id}>
               <Appointment

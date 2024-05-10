@@ -2,6 +2,52 @@
   font-family: "Reddit Sans", sans-serif;
 }
 
+.bg-image {
+  background-image: url('../../assets/background.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.bg-color {
+  background-color: #0051DB;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.page-title {
+  font-size: 4em;
+  color: #fff;
+}
+
 .btn {
   text-transform: lowercase;
+  border-radius: 30px;
+}
+
+.btn-blue:hover {
+  color: #0051DB;
+}
+
+.btn-white {
+  color: #0051DB;
+}
+
+.btn-white:hover {
+  background-color: #0051DB;
+}
+
+.card {
+  transition: all .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 390px;
+  }
 }
