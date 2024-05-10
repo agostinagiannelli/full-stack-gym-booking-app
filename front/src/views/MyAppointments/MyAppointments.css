@@ -5,6 +5,11 @@
     height: 100vh;
 }
 
+.page-title {
+    font-size: 4em;
+    color: #fff;
+}
+
 /* .card,
 .card img,
 .translateY,

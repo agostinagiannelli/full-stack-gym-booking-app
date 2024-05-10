@@ -5,10 +5,10 @@ export default function Home() {
     return (
         <div className="bg-image">
             <NavBar />
-            <div className="title d-flex justify-content-center align-items-center">
-                <div className="col-md-6">
+            <div className="home-content d-flex justify-content-center align-items-center">
+                <div className="container col-md-8">
                     <div className="text-center">
-                        <h2 className="my-5">Welcome, get ready to level up your fitness game.</h2>
+                        <h2 className="my-5 home-title">Welcome 👋,<br />get ready to level up your fitness game.</h2>
                         <button className="btn btn-outline-light btn-lg">Get Started</button>
                     </div>
                 </div>

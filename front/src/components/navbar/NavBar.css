@@ -1,10 +1,47 @@
-.navbar-text,
-.navbar-text:hover,
-.navbar-text:focus,
-.navbar-text:active {
+.nav-link {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
     color: #fff;
 }
 
-.icon {
-    height: 10;
+.navbar-toggler {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.navbar-toggler-icon {
+    background-image: url("../../assets/menu.png");
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none
+}
+
+@media (max-width: 991px) {
+    .nav-link {
+        color: #0051DB;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link:active {
+        color: #0051DB;
+    }
+
+    .navbar-nav img {
+        content: url("../../assets/icon-login.png");
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-nav.desktop-center {
+        align-items: center;
+    }
 }

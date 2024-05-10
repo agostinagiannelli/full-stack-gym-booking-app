@@ -20,8 +20,8 @@ export default function MyAppointments() {
       <NavBar />
       <div className="d-flex justify-content-center align-items-center">
         <div className="col-md-6">
-          <div className="text-center">
-            <h2 className="my-5">My Appointments</h2>
+          <div className="text-center mb-5">
+            <h2 className="my-5 page-title">My Appointments</h2>
             <button className="btn btn-outline-light btn-lg">Save Your Spot</button>
           </div>
         </div>

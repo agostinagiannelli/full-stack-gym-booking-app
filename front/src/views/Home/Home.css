@@ -1,15 +1,26 @@
 .bg-image {
-    background-image: url('../../assets/Background.png');
+    background-image: url('../../assets/background.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
 }
 
-.title {
+.home-content {
     margin-top: 140px;
 }
 
-h2 {
+.home-title {
     font-size: 6em;
     color: #fff;
+}
+
+@media (max-width: 991px) {
+    .title {
+        margin-top: 80px;
+    }
+
+    h2 {
+        font-size: 4em;
+    }
+
 }
