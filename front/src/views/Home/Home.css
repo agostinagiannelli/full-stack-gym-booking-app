@@ -1,0 +1,15 @@
+.bg-image {
+    background-image: url('../../assets/Background.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.title {
+    margin-top: 140px;
+}
+
+h2 {
+    font-size: 6em;
+    color: #fff;
+}

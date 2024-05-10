@@ -1,15 +1,18 @@
-import MyAppointments from '../MyAppointments/MyAppointments';
-import Register from '../../components/Register/Register'
-import Login from '../../components/Login/Login'
+import './Home.css';
+import NavBar from '../../components/NavBar/NavBar';
 
 export default function Home() {
-    // const isRegistered = false;
-
     return (
-        <div>
-            <h1>Welcome</h1>
-            <MyAppointments />
-            {/* {isRegistered ? <Login /> : <Register />} */}
+        <div className="bg-image">
+            <NavBar />
+            <div className="title d-flex justify-content-center align-items-center">
+                <div className="col-md-6">
+                    <div className="text-center">
+                        <h2 className="my-5">Welcome, get ready to level up your fitness game.</h2>
+                        <button className="btn btn-outline-light btn-lg">Get Started</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    )
+    );
 }

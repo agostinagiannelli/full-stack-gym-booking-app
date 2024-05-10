@@ -1,5 +1,7 @@
 #root {
-  max-width: 1200px;
-  margin: 1rem auto;
-  text-align: center;
+  font-family: "Reddit Sans", sans-serif;
+}
+
+.btn {
+  text-transform: lowercase;
 }

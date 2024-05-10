@@ -1,0 +1,26 @@
+.bg-color {
+    background-color: #0051DB;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+/* .card,
+.card img,
+.translateY,
+.btn {
+    transition: all .3s ease;
+}
+
+.card img:hover {
+    opacity: 80%;
+}
+
+.card:hover,
+.translateY:hover {
+    transform: translateY(-5px);
+}
+
+.btn:hover {
+    border-radius: 30px;
+} */

@@ -1,12 +1,14 @@
+import './reset.css'
 import './App.css'
-import NavBar from './components/NavBar/NavBar'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './views/Home/Home'
+import MyAppointments from './views/MyAppointments/MyAppointments'
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Home />
+      {/* <Home /> */}
+      <MyAppointments />
     </>
   )
 }

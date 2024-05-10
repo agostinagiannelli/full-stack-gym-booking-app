@@ -1,0 +1,26 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DB_DATABASE = exports.DB_PASSWORD = exports.DB_USERNAME = exports.DB_PORT = exports.DB_HOST = exports.DB_TYPE = exports.HOST = exports.PROTO = exports.PORT = void 0;
+var dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config({ path: "./src/config/.env" });
+var PORT = Number(process.env.PORT) || 3000;
+exports.PORT = PORT;
+var PROTO = process.env.PROTO || "http";
+exports.PROTO = PROTO;
+var HOST = process.env.HOST || "localhost";
+exports.HOST = HOST;
+var DB_TYPE = process.env.DB_TYPE || "postgres";
+exports.DB_TYPE = DB_TYPE;
+var DB_HOST = process.env.DB_HOST || "localhost";
+exports.DB_HOST = DB_HOST;
+var DB_PORT = Number(process.env.DB_PORT) || 5432;
+exports.DB_PORT = DB_PORT;
+var DB_USERNAME = process.env.DB_USERNAME || "test";
+exports.DB_USERNAME = DB_USERNAME;
+var DB_PASSWORD = process.env.DB_PASSWORD || "test";
+exports.DB_PASSWORD = DB_PASSWORD;
+var DB_DATABASE = process.env.DB_DATABASE || "test";
+exports.DB_DATABASE = DB_DATABASE;

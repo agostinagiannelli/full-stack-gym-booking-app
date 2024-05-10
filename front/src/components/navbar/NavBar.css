@@ -1,0 +1,10 @@
+.navbar-text,
+.navbar-text:hover,
+.navbar-text:focus,
+.navbar-text:active {
+    color: #fff;
+}
+
+.icon {
+    height: 10;
+}
