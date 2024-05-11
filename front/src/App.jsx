@@ -3,6 +3,7 @@ import './App.css'
 import Home from './views/Home/Home'
 import MyAppointments from './views/MyAppointments/MyAppointments'
 import Register from './views/Register/Register'
+import Login from './views/Login/Login'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       {/* <Home /> */}
       {/* <MyAppointments /> */}
       <Register />
+      <Login />
     </>
   )
 }

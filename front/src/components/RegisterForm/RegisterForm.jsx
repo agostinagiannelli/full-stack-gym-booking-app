@@ -1,26 +1,24 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { registerUser } from '../../helpers/axios'
 import { validateUser } from '../../helpers/validateUser'
+import { showToast } from '../../helpers/showToast';
 import './RegisterForm.css'
 
 export default function RegisterForm() {
-    const handleSubmit = (values) => {
+    const handleSubmit = async (values) => {
         values.identityNumber = parseInt(values.identityNumber);
+        try {
+            await registerUser(values);
+            showToast({ text: "Success! Welcome aboard, fitness enthusiast! 🚀" }, { destination: "" });
+        } catch (err) {
+            showToast({ text: "Oops! Email, ID or username already registered 🚫" }, { destination: "" });
+            console.error(err);
+        }
+    };
 
-        registerUser(values)
-            .then(() => {
-                alert('User registered successfully');
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }
-
-    const errorMessage = (message) => {
-        return (
-            <div className="mt-2 errorMessage">❌ {message}</div>
-        )
-    }
+    const errorMessage = (message) => (
+        <div className="mt-2 errorMessage">❌ {message}</div>
+    );
 
     return (
         <>
@@ -37,7 +35,7 @@ export default function RegisterForm() {
                         <Formik
                             initialValues={{ name: '', email: '', dateOfBirth: '', identityNumber: '', username: '', password: '' }}
                             validate={validateUser}
-                            onSubmit={(values) => { handleSubmit(values) }}
+                            onSubmit={handleSubmit}
                         >
                             {({ isValid }) => (
                                 <Form>
@@ -90,7 +88,7 @@ export default function RegisterForm() {
                                         <Field
                                             className="form-control"
                                             placeholder="********"
-                                            type="text"
+                                            type="password"
                                             name="password" />
                                         <ErrorMessage name="password" render={msg => errorMessage(msg)} />
                                         <label htmlFor="floatingInput">Password</label>
