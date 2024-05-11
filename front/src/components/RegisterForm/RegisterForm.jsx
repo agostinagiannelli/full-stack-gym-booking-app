@@ -1,27 +1,25 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { useState } from 'react'
-import axios from 'axios'
+import { registerUser } from '../../helpers/axios'
 import { validateUser } from '../../helpers/validateUser'
 import './RegisterForm.css'
 
 export default function RegisterForm() {
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState(false)
-
     const handleSubmit = (values) => {
         values.identityNumber = parseInt(values.identityNumber);
-        values.dateOfBirth = new Date(values.dateOfBirth);
 
-        axios.post('http://localhost:3000/users/register', values)
+        registerUser(values)
             .then(() => {
-                setSuccess(true)
-                setError('')
+                alert('User registered successfully');
             })
             .catch(err => {
-                console.log(err.response.data)
-                setError(err.response.data)
-                setSuccess(false)
+                console.error(err)
             })
+    }
+
+    const errorMessage = (message) => {
+        return (
+            <div className="mt-2 errorMessage">❌ {message}</div>
+        )
     }
 
     return (
@@ -41,65 +39,67 @@ export default function RegisterForm() {
                             validate={validateUser}
                             onSubmit={(values) => { handleSubmit(values) }}
                         >
-                            <Form>
-                                <div className="form-floating mb-3">
-                                    <Field
-                                        className="form-control"
-                                        placeholder="John Smith"
-                                        type="text"
-                                        name="name" />
-                                    <ErrorMessage name="name" />
-                                    <label htmlFor="floatingInput">Name</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <Field
-                                        className="form-control"
-                                        placeholder="name@example.com"
-                                        type="email"
-                                        name="email" />
-                                    <ErrorMessage name="email" />
-                                    <label htmlFor="floatingInput">Email</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <Field
-                                        className="form-control"
-                                        placeholder="01/01/90"
-                                        type="text"
-                                        name="dateOfBirth" />
-                                    <ErrorMessage name="dateOfBirth" />
-                                    <label htmlFor="floatingInput">Date Of Birth</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <Field
-                                        className="form-control"
-                                        placeholder="name@example.com"
-                                        type="text"
-                                        name="identityNumber" />
-                                    <ErrorMessage name="identityNumber" />
-                                    <label htmlFor="floatingInput">Identity Number</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <Field
-                                        className="form-control"
-                                        placeholder="name@example.com"
-                                        type="text"
-                                        name="username" />
-                                    <ErrorMessage name="username" />
-                                    <label htmlFor="floatingInput">Username</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <Field
-                                        className="form-control"
-                                        placeholder="name@example.com"
-                                        type="text"
-                                        name="password" />
-                                    <ErrorMessage name="password" />
-                                    <label htmlFor="floatingInput">Password</label>
-                                </div>
-                                <div className="d-flex justify-content-center pt-4">
-                                    <button className="btn btn-outline-light btn-lg btn-blue" type="submit">Submit</button>
-                                </div>
-                            </Form>
+                            {({ isValid }) => (
+                                <Form>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="John Smith"
+                                            type="text"
+                                            name="name" />
+                                        <ErrorMessage name="name" render={msg => errorMessage(msg)} />
+                                        <label htmlFor="floatingInput">Name</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="name@example.com"
+                                            type="email"
+                                            name="email" />
+                                        <ErrorMessage name="email" render={msg => errorMessage(msg)} />
+                                        <label htmlFor="floatingInput">Email</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="01/01/90"
+                                            type="text"
+                                            name="dateOfBirth" />
+                                        <ErrorMessage name="dateOfBirth" render={msg => errorMessage(msg)} />
+                                        <label htmlFor="floatingInput">Date Of Birth</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="11222333"
+                                            type="text"
+                                            name="identityNumber" />
+                                        <ErrorMessage name="identityNumber" render={msg => errorMessage(msg)} />
+                                        <label htmlFor="floatingInput">Identity Number</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="jsmith"
+                                            type="text"
+                                            name="username" />
+                                        <ErrorMessage name="username" render={msg => errorMessage(msg)} />
+                                        <label htmlFor="floatingInput">Username</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="********"
+                                            type="text"
+                                            name="password" />
+                                        <ErrorMessage name="password" render={msg => errorMessage(msg)} />
+                                        <label htmlFor="floatingInput">Password</label>
+                                    </div>
+                                    <div className="d-flex justify-content-center pt-4 mb-5">
+                                        <button className="btn btn-outline-light btn-lg btn-blue" type="submit" disabled={!isValid}>Submit</button>
+                                    </div>
+                                </Form>
+                            )}
                         </Formik>
                     </div>
                 </div>
