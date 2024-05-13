@@ -3,7 +3,7 @@ export const showToast = ({ text, destination }) => {
         text,
         duration: 3000,
         destination,
-        newWindow: true,
+        newWindow: false,
         close: false,
         gravity: "bottom",
         position: "right",

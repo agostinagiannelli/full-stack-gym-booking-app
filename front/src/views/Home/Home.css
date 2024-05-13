@@ -2,7 +2,7 @@
     background-image: url('../../assets/background.png');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .home-content {
@@ -20,7 +20,7 @@
     }
 
     .home-title {
-        font-size: 4.5em;
+        font-size: 4em;
     }
 }
 

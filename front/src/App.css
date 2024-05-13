@@ -2,18 +2,26 @@
   font-family: "Reddit Sans", sans-serif;
 }
 
-.bg-image {
-  background-image: url('../../assets/background.png');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-}
-
 .bg-color {
   background-color: #0051DB;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+}
+
+body,
+label,
+.form-control,
+.form-control::after,
+.form-select,
+.form-select::after,
+.btn-blue:hover,
+.btn-white {
+  color: #0051DB;
+}
+
+.errorMessage {
+  color: #fff;
 }
 
 .page-title {
@@ -26,14 +34,6 @@
   border-radius: 30px;
 }
 
-.btn-blue:hover {
-  color: #0051DB;
-}
-
-.btn-white {
-  color: #0051DB;
-}
-
 .btn-white:hover {
   background-color: #0051DB;
 }
@@ -44,6 +44,11 @@
 
 .card:hover {
   transform: translateY(-5px);
+}
+
+.card-title,
+.list-group-item {
+  color: #0051DB;
 }
 
 @media (max-width: 991px) {

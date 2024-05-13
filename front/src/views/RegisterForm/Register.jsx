@@ -1,7 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { registerUser } from '../../helpers/axios'
 import { validateUser } from '../../helpers/validateUser'
-import { showToast } from '../../helpers/showToast';
+import { showToast } from '../../helpers/toast'
 import './RegisterForm.css'
 
 export default function RegisterForm() {
@@ -21,7 +21,7 @@ export default function RegisterForm() {
     );
 
     return (
-        <>
+        <div className='bg-color'>
             <div className="d-flex justify-content-center align-items-center">
                 <div className="col-md-6">
                     <div className="text-center mb-5">
@@ -61,7 +61,7 @@ export default function RegisterForm() {
                                         <Field
                                             className="form-control"
                                             placeholder="01/01/90"
-                                            type="text"
+                                            type="date"
                                             name="dateOfBirth" />
                                         <ErrorMessage name="dateOfBirth" render={msg => errorMessage(msg)} />
                                         <label htmlFor="floatingInput">Date Of Birth</label>
@@ -93,8 +93,8 @@ export default function RegisterForm() {
                                         <ErrorMessage name="password" render={msg => errorMessage(msg)} />
                                         <label htmlFor="floatingInput">Password</label>
                                     </div>
-                                    <div className="d-flex justify-content-center pt-4 mb-5">
-                                        <button className="btn btn-outline-light btn-lg btn-blue" type="submit" disabled={!isValid}>Submit</button>
+                                    <div className="d-flex justify-content-center pt-4 pb-5">
+                                        <button className="btn btn-outline-light btn-lg btn-blue px-5" type="submit" disabled={!isValid}>Submit</button>
                                     </div>
                                 </Form>
                             )}
@@ -102,6 +102,6 @@ export default function RegisterForm() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
