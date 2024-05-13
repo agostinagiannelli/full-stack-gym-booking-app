@@ -6,21 +6,18 @@ import NavBar from '../../components/NavBar/NavBar'
 import Footer from '../../components/Footer/Footer';
 
 export default function Register() {
-    const handleSubmit = async (values) => {
+    const handleSubmit = (values) => {
         values.identityNumber = parseInt(values.identityNumber);
-
-        try {
-            await registerUser(values);
-            showToast({ text: "Success! Welcome aboard, fitness enthusiast! 🚀" }, { destination: "" });
-        } catch (err) {
-            showToast({ text: "Oops! Email, ID or username already registered 🚫" }, { destination: "" });
-            console.error(err);
-        }
+        registerUser(values)
+            .then((res) => {
+                showToast({ text: "Success! Welcome aboard, fitness enthusiast! 🚀" }, { destination: "" });
+                // Login user after successful registration
+            })
+            .catch((err) => {
+                console.error(err);
+                showToast({ text: "Oops! Email, ID or username already registered 🚫" }, { destination: "" });
+            })
     };
-
-    const errorMessage = (message) => (
-        <div className="mt-2 errorMessage">❌ {message}</div>
-    );
 
     return (
         <div className='bg-color'>
@@ -36,7 +33,7 @@ export default function Register() {
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <Formik
-                            initialValues={{ name: '', email: '', dateOfBirth: '', identityNumber: '', username: '', password: '' }}
+                            initialValues={{ name: '', email: '', dateOfBirth: '', identityNumber: '', username: '', password: '', passwordConfirmation: '' }}
                             validate={validateUser}
                             onSubmit={handleSubmit}
                         >
@@ -48,8 +45,11 @@ export default function Register() {
                                             placeholder="John Smith"
                                             type="text"
                                             name="name" />
-                                        <ErrorMessage name="name" render={msg => errorMessage(msg)} />
-                                        <label htmlFor="floatingInput">Name</label>
+                                        <ErrorMessage
+                                            name="name"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="name">Name</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <Field
@@ -57,8 +57,11 @@ export default function Register() {
                                             placeholder="name@example.com"
                                             type="email"
                                             name="email" />
-                                        <ErrorMessage name="email" render={msg => errorMessage(msg)} />
-                                        <label htmlFor="floatingInput">Email</label>
+                                        <ErrorMessage
+                                            name="email"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="email">Email</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <Field
@@ -66,8 +69,11 @@ export default function Register() {
                                             placeholder="01/01/1990"
                                             type="date"
                                             name="dateOfBirth" />
-                                        <ErrorMessage name="dateOfBirth" render={msg => errorMessage(msg)} />
-                                        <label htmlFor="floatingInput">Date Of Birth</label>
+                                        <ErrorMessage
+                                            name="dateOfBirth"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="dateOfBirth">Date Of Birth</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <Field
@@ -75,8 +81,11 @@ export default function Register() {
                                             placeholder="11222333"
                                             type="text"
                                             name="identityNumber" />
-                                        <ErrorMessage name="identityNumber" render={msg => errorMessage(msg)} />
-                                        <label htmlFor="floatingInput">Identity Number</label>
+                                        <ErrorMessage
+                                            name="identityNumber"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="identityNumber">Identity Number</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <Field
@@ -84,8 +93,11 @@ export default function Register() {
                                             placeholder="jsmith"
                                             type="text"
                                             name="username" />
-                                        <ErrorMessage name="username" render={msg => errorMessage(msg)} />
-                                        <label htmlFor="floatingInput">Username</label>
+                                        <ErrorMessage
+                                            name="username"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="username">Username</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <Field
@@ -93,8 +105,23 @@ export default function Register() {
                                             placeholder="********"
                                             type="password"
                                             name="password" />
-                                        <ErrorMessage name="password" render={msg => errorMessage(msg)} />
-                                        <label htmlFor="floatingInput">Password</label>
+                                        <ErrorMessage
+                                            name="password"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="password">Password</label>
+                                    </div>
+                                    <div className="form-floating mb-3">
+                                        <Field
+                                            className="form-control"
+                                            placeholder="********"
+                                            type="password"
+                                            name="passwordConfirmation" />
+                                        <ErrorMessage
+                                            name="passwordConfirmation"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="passwordConfirmation">Repeat Password</label>
                                     </div>
                                     <div className="d-flex justify-content-center pt-4 pb-5">
                                         <button className="btn btn-outline-light btn-lg btn-blue px-5" type="submit" disabled={!isValid}>Submit</button>

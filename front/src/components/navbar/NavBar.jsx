@@ -1,7 +1,7 @@
-import './NavBar.css';
-import logo from '../../assets/reset-fitness-white.png';
-import loginIconWhite from '../../assets/icon-login-white.png';
-import logoutIconWhite from '../../assets/icon-logout-white.png';
+import './NavBar.css'
+import logo from '../../assets/img/reset-fitness-white.png'
+import loginIconWhite from '../../assets/icons/icon-login-white.png'
+import logoutIconWhite from '../../assets/icons/icon-logout-white.png'
 
 export default function NavBar() {
     return (

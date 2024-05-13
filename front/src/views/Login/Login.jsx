@@ -5,19 +5,18 @@ import NavBar from '../../components/NavBar/NavBar'
 import Footer from '../../components/Footer/Footer';
 
 export default function Login() {
-    const handleSubmit = async (values) => {
-        try {
-            await loginUser(values);
-            showToast({ text: "Success! Ready to crush your workout goals? 💥" }, { destination: "" });
-        } catch (err) {
-            showToast({ text: "Oops! Invalid username or password 🚫" }, { destination: "" });
-            console.error(err);
-        }
+    const handleSubmit = (values) => {
+        loginUser(values)
+            .then((res) => {
+                showToast({ text: "Success! Ready to crush your workout goals? 💥" }, { destination: "" });
+                localStorage.setItem('userId', res.user.id);
+                // Navigate to the user's appointments
+            })
+            .catch((err) => {
+                console.error(err);
+                showToast({ text: "Oops! Invalid username or password 🚫" }, { destination: "" });
+            })
     };
-
-    const errorMessage = (message) => (
-        <div className="mt-2 errorMessage">❌ {message}</div>
-    );
 
     return (
         <div className='bg-color'>
@@ -37,14 +36,14 @@ export default function Login() {
                             validate={({ username, password }) => {
                                 const errors = {};
                                 if (!username) {
-                                    errors.username = 'Required';
+                                    errors.username = `⚠️ Hey, this one's mandatory!`;
                                 }
                                 if (!password) {
-                                    errors.password = 'Required';
+                                    errors.password = `⚠️ Hey, this one's mandatory!`;
                                 }
                                 return errors;
                             }}
-                            onSubmit={(values) => handleSubmit(values)}
+                            onSubmit={handleSubmit}
                         >
                             {({ isValid }) => (
                                 <Form>
@@ -55,8 +54,10 @@ export default function Login() {
                                             type="text"
                                             name="username"
                                         />
-                                        <ErrorMessage name="username" render={errorMessage} />
-                                        <label htmlFor="floatingInput">Username</label>
+                                        <ErrorMessage name="username"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="username">Username</label>
                                     </div>
                                     <div className="form-floating mb-3">
                                         <Field
@@ -65,8 +66,11 @@ export default function Login() {
                                             type="password"
                                             name="password"
                                         />
-                                        <ErrorMessage name="password" render={errorMessage} />
-                                        <label htmlFor="floatingInput">Password</label>
+                                        <ErrorMessage
+                                            name="password"
+                                            component="div"
+                                            className="mt-2 errorMessage" />
+                                        <label htmlFor="password">Password</label>
                                     </div>
                                     <div className="d-flex justify-content-center pt-4 pb-5">
                                         <button className="btn btn-outline-light btn-lg btn-blue px-5" type="submit" disabled={!isValid}>

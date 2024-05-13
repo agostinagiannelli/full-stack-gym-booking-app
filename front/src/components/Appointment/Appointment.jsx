@@ -6,14 +6,15 @@ export default function Appointment({ id, date, time, status }) {
   const statusText = status === 'Confirmed 👍' ? 'green' : 'red';
   const isDisabled = status === 'Cancelled 👎';
 
-  const handleCancel = async (id) => {
-    try {
-      await cancelAppointment(id);
-      showToast({ text: "Appointment cancelled successfully ✅" }, { destination: "" });
-    } catch (err) {
-      showToast({ text: "Oops! Unable to cancel appointment ❌" }, { destination: "" });
-      console.error(err);
-    }
+  const handleCancel = (id) => {
+    cancelAppointment(id)
+      .then((res) => {
+        showToast({ text: "Appointment cancelled successfully ✅" }, { destination: "" });
+      })
+      .catch((err) => {
+        console.error(err);
+        showToast({ text: "Oops! Unable to cancel appointment 🚫" }, { destination: "" });
+      })
   };
 
   return (

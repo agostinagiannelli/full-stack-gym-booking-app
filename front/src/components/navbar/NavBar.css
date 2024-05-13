@@ -14,7 +14,7 @@
 }
 
 .navbar-toggler-icon {
-    background-image: url("../../assets/icon-menu.png");
+    background-image: url("../../assets/icons/icon-menu.png");
 }
 
 .navbar-toggler:focus {
@@ -24,7 +24,7 @@
 }
 
 .btn-close {
-    background: transparent url("../../assets/icon-close.png") center / 2em auto no-repeat;
+    background: transparent url("../../assets/icons/icon-close.png") center / 2em auto no-repeat;
     opacity: 100%;
 }
 
@@ -44,7 +44,7 @@
     }
 
     .navbar-nav img {
-        content: url("../../assets/icon-login.png");
+        content: url("../../assets/icons/icon-login.png");
     }
 }
 

@@ -1,27 +1,36 @@
 import axios from 'axios'
 
 export async function getUsers() {
-    await axios.get('http://localhost:3000/users');
+    const response = await axios.get('http://localhost:3000/users');
+    return response.data;
 }
 export async function getUserById(id) {
-    await axios.get(`http://localhost:3000/users/${id}`);
+    const response = await axios.get(`http://localhost:3000/users/${id}`);
+    return response.data;
 }
 export async function registerUser(user) {
-    await axios.post('http://localhost:3000/users/register', user)
+    const response = await axios.post('http://localhost:3000/users/register', user);
+    return response.data;
 }
 export async function loginUser(credential) {
-    await axios.post('http://localhost:3000/users/login', credential);
+    const response = await axios.post('http://localhost:3000/users/login', credential);
+    return response.data;
 }
 
 export async function getAppointments(userId) {
-    await axios.get("http://localhost:3000/appointments/", userId);
+    const response = await axios.get("http://localhost:3000/appointments/", userId);
+    return response.data;
 }
 export async function getAppointmentById(id) {
-    await axios.get(`http://localhost:3000/appointments/${id}`);
+    const response = await axios.get(`http://localhost:3000/appointments/${id}`);
+    return response.data;
 }
 export async function scheduleAppointment(appointment) {
-    await axios.post('http://localhost:3000/appointments/schedule', appointment);
+    const userId = localStorage.getItem('userId');
+    const response = await axios.post(`http://localhost:3000/appointments/schedule`, { ...appointment, userId });
+    return response.data;
 }
 export async function cancelAppointment(id) {
-    await axios.put(`http://localhost:3000/appointments/cancel/${id}`);
+    const response = await axios.put(`http://localhost:3000/appointments/cancel/${id}`);
+    return response.data;
 }

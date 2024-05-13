@@ -1,12 +1,12 @@
 export function validateAppointment(values) {
     const errors = {};
     if (!values.date) {
-        errors.date = 'Required';
+        errors.date = `⚠️ Hey, this one's mandatory!`;
     } else if (new Date(values.date) < new Date()) {
-        errors.date = 'Invalid date: cannot be in the past';
+        errors.date = `⚠️ Whoops! Date can't be in the past`;
     }
     if (!values.time) {
-        errors.time = 'Required';
+        errors.time = `⚠️ Hey, this one's mandatory!`;
     }
     return errors;
 }
