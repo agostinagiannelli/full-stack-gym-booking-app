@@ -1,16 +1,22 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { Link, useNavigate } from 'react-router-dom'
+import { Formik, Form } from 'formik'
 import { loginUser } from '../../helpers/axios'
 import { showToast } from '../../helpers/showToast'
+import Input from '../../components/Input/Input'
+import SubmitButton from '../../components/Buttons/SubmitButton'
+import Title from '../../components/Title/Title'
 import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Footer/Footer'
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const handleSubmit = (values) => {
         loginUser(values)
             .then((res) => {
                 showToast({ text: "Success! Ready to crush your workout goals? 💥" }, { destination: "" });
                 localStorage.setItem('userId', res.user.id);
-                // Navigate to the user's appointments
+                navigate('/my-appointments');
             })
             .catch((err) => {
                 console.error(err);
@@ -21,13 +27,9 @@ export default function Login() {
     return (
         <div className='bg-color'>
             <NavBar />
-            <div className="d-flex justify-content-center align-items-center">
-                <div className="col-md-6">
-                    <div className="text-center mb-5">
-                        <h2 className="my-5 page-title">Log In</h2>
-                    </div>
-                </div>
-            </div>
+            <Title
+                title="Log In"
+            />
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
@@ -47,43 +49,33 @@ export default function Login() {
                         >
                             {({ isValid }) => (
                                 <Form>
-                                    <div className="form-floating mb-3">
-                                        <Field
-                                            className="form-control"
-                                            placeholder="jsmith"
-                                            type="text"
-                                            name="username"
-                                        />
-                                        <ErrorMessage name="username"
-                                            component="div"
-                                            className="mt-2 errorMessage" />
-                                        <label htmlFor="username">Username</label>
-                                    </div>
-                                    <div className="form-floating mb-3">
-                                        <Field
-                                            className="form-control"
-                                            placeholder="********"
-                                            type="password"
-                                            name="password"
-                                        />
-                                        <ErrorMessage
-                                            name="password"
-                                            component="div"
-                                            className="mt-2 errorMessage" />
-                                        <label htmlFor="password">Password</label>
-                                    </div>
+                                    <Input
+                                        placeholder="jsmith"
+                                        type="text"
+                                        name="username"
+                                        label="Username"
+                                    />
+                                    <Input
+                                        placeholder="********"
+                                        type="password"
+                                        name="password"
+                                        label="Password"
+                                    />
                                     <div className="d-flex justify-content-center pt-4 pb-5">
-                                        <button className="btn btn-outline-light btn-lg btn-blue px-5" type="submit" disabled={!isValid}>
-                                            Submit
-                                        </button>
+                                        <SubmitButton
+                                            disabled={!isValid}
+                                            text="Submit" />
                                     </div>
                                 </Form>
                             )}
                         </Formik>
                     </div>
                 </div>
+                <div className="text-center text-white">
+                    <p>New here? <span><Link to="/register" className="link-light">Register now</Link></span></p>
+                </div>
             </div>
             <Footer />
         </div>
-    );
+    )
 }

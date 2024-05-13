@@ -38,17 +38,19 @@ label,
   background-color: #0051DB;
 }
 
-.card {
-  transition: all .3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
 .card-title,
 .list-group-item {
   color: #0051DB;
+}
+
+.card,
+img {
+  transition: all .3s ease;
+}
+
+.card:hover,
+img:hover {
+  transform: translateY(-3px);
 }
 
 @media (max-width: 991px) {

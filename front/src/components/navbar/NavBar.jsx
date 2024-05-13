@@ -1,7 +1,7 @@
-import './NavBar.css'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/img/reset-fitness-white.png'
-import loginIconWhite from '../../assets/icons/icon-login-white.png'
-import logoutIconWhite from '../../assets/icons/icon-logout-white.png'
+import LoginControl from '../LoginControl/LoginControl'
+import './NavBar.css'
 
 export default function NavBar() {
     return (
@@ -25,25 +25,18 @@ export default function NavBar() {
                     <div className="offcanvas-body">
                         <ul className="navbar-nav nav-underline justify-content-end flex-grow-1 pe-3 desktop-center">
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Schedule</a>
+                                <Link to="/my-appointments" className="nav-link">My Appointments</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Pricing</a>
+                                <Link to="/timetable" className="nav-link">Timetable</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">About Us</a>
+                                <Link to="/pricing" className="nav-link">Pricing</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
-                                    <img
-                                        src={loginIconWhite}
-                                        width="24"
-                                        height="100%"
-                                        className="d-inline-block align-top"
-                                        alt="Login Icon"
-                                    />
-                                </a>
+                                <Link to="/about-us" className="nav-link">About Us</Link>
                             </li>
+                            <LoginControl />
                         </ul>
                     </div>
                 </div>

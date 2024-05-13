@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react';
-import loginIconWhite from '../../assets/icons/icon-login-white.png';
-import logoutIconWhite from '../../assets/icons/icon-logout-white.png';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import loginIconWhite from '../../assets/icons/icon-login-white.png'
+import logoutIconWhite from '../../assets/icons/icon-logout-white.png'
 
 export default function LoginControl() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [user, setUser] = useState('');
-
-    const handleLogin = () => {
-        setIsLoggedIn(true);
-    };
-
+    const [userId, setUserId] = useState('');
+    
     useEffect(() => {
-        setUser(localStorage.getItem('userId'));
-    }, [user]);
+        const storedUserId = localStorage.getItem('userId');
+        setUserId(storedUserId);
+    }, []);
 
     return (
-        <div>Login Control</div>
-    )
+        <li className="nav-item">
+            <Link to="/login" className="nav-link">
+                <img
+                    src={userId ? logoutIconWhite : loginIconWhite}
+                    width="24"
+                    height="100%"
+                    className="d-inline-block align-top"
+                    alt="Login Icon"
+                />
+            </Link>
+        </li>
+    );
 }

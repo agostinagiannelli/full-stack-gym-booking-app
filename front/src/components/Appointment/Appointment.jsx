@@ -1,21 +1,7 @@
-import { showToast } from '../../helpers/showToast'
-import { cancelAppointment } from '../../helpers/axios'
-
-export default function Appointment({ id, date, time, status }) {
-  status === 'active' ? status = 'Confirmed 👍' : status = 'Cancelled 👎'
+export default function Appointment({ id, date, time, status, handleCancel }) {
+  status === 'active' ? status = 'Confirmed 👍' : status = 'Cancelled 👎';
   const statusText = status === 'Confirmed 👍' ? 'green' : 'red';
   const isDisabled = status === 'Cancelled 👎';
-
-  const handleCancel = (id) => {
-    cancelAppointment(id)
-      .then((res) => {
-        showToast({ text: "Appointment cancelled successfully ✅" }, { destination: "" });
-      })
-      .catch((err) => {
-        console.error(err);
-        showToast({ text: "Oops! Unable to cancel appointment 🚫" }, { destination: "" });
-      })
-  };
 
   return (
     <div className="col d-flex justify-content-center">
