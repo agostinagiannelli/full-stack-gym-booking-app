@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
 import { registerUser } from '../../helpers/axios'
 import { validateUser } from '../../helpers/validateUser'
@@ -33,6 +33,7 @@ export default function Register() {
             <Title
                 title="Sign Up"
             />
+            <p className="text-center text-white">Already with us? <span><Link to="/login" className="link-light">Log in now</Link></span></p>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
@@ -78,12 +79,6 @@ export default function Register() {
                                         type="password"
                                         name="password"
                                         label="Password"
-                                    />
-                                    <Input
-                                        placeholder="********"
-                                        type="password"
-                                        name="passwordConfirmation"
-                                        label="Repeat Password"
                                     />
                                     <div className="d-flex justify-content-center pt-4 pb-5">
                                         <SubmitButton

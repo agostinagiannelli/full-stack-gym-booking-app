@@ -1,22 +1,23 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { showToast } from '../../helpers/showToast';
-import { cancelAppointment } from '../../helpers/axios';
-import Title from '../../components/Title/Title';
-import Appointment from '../../components/Appointment/Appointment';
-import NavBar from '../../components/NavBar/NavBar';
-import Footer from '../../components/Footer/Footer';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { showToast } from '../../helpers/showToast'
+import { cancelAppointment } from '../../helpers/axios'
+import Title from '../../components/Title/Title'
+import Appointment from '../../components/Appointment/Appointment'
+import NavBar from '../../components/NavBar/NavBar'
+import Footer from '../../components/Footer/Footer'
 
 export default function MyAppointments() {
   const [myAppointments, setMyAppointments] = useState([]);
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
     refreshAppointments();
   }, []);
 
   const refreshAppointments = () => {
-    axios.get('http://localhost:3000/appointments')
+    axios.get(`http://localhost:3000/appointments?userId=${userId}`)
       .then((res) => {
         setMyAppointments(res.data);
       })
@@ -38,9 +39,9 @@ export default function MyAppointments() {
   };
 
   const AppointmentList = ({ appointments, handleCancel }) => (
-    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3 pb-5">
+    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-5 g-3 pb-5">
       {appointments.map(({ id, time, date, status }) => (
-        <div className="col" key={id}>
+        <div className="row" key={id}>
           <Appointment
             id={id}
             time={time}

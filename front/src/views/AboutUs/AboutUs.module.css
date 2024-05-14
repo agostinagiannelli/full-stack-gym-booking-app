@@ -1,0 +1,59 @@
+.background {
+    background-color: #0051DB;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.aboutUsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.imageContainer {
+    flex: 1;
+}
+
+.gymImage {
+    width: 100%;
+    transition: all .3s ease;
+    border-radius: 0.375rem;
+}
+
+.gymImage:hover {
+    transform: translateY(-3px);
+}
+
+.textContainer {
+    flex: 2;
+    margin-left: 50px;
+}
+
+.paragraph {
+    color: white;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .aboutUsContainer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .textContainer {
+        margin-left: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .imageContainer {
+        margin-top: 20px;
+    }
+}

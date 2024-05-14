@@ -30,10 +30,5 @@ export function validateUser(values) {
     } else if (!/^[a-zA-Z0-9]{4,20}$/i.test(values.password)) {
         errors.password = `⚠️ Passwords should have 4-20 characters with only letters and numbers`;
     }
-    if (!values.passwordConfirmation) {
-        errors.passwordConfirmation = `⚠️ Hey, this one's mandatory!`;
-    } else if (values.password !== values.passwordConfirmation) {
-        errors.passwordConfirmation = `⚠️ Passwords don't match. Try again!`;
-    }
     return errors;
 }

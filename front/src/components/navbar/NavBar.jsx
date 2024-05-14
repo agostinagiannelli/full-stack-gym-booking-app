@@ -28,9 +28,6 @@ export default function NavBar() {
                                 <Link to="/my-appointments" className="nav-link">My Appointments</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/timetable" className="nav-link">Timetable</Link>
-                            </li>
-                            <li className="nav-item">
                                 <Link to="/pricing" className="nav-link">Pricing</Link>
                             </li>
                             <li className="nav-item">

@@ -16,7 +16,11 @@ label,
 .form-select,
 .form-select::after,
 .btn-blue:hover,
-.btn-white {
+.btn-white,
+.card-header,
+.card-title,
+.list-group-item,
+li {
   color: #0051DB;
 }
 
@@ -38,9 +42,8 @@ label,
   background-color: #0051DB;
 }
 
-.card-title,
-.list-group-item {
-  color: #0051DB;
+.card-header {
+  background-color: #fff;
 }
 
 .card,

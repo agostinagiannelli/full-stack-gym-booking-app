@@ -30,6 +30,7 @@ export default function Login() {
             <Title
                 title="Log In"
             />
+            <p className="text-center text-white">New here? <span><Link to="/register" className="link-light">Register now</Link></span></p>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
@@ -70,9 +71,6 @@ export default function Login() {
                             )}
                         </Formik>
                     </div>
-                </div>
-                <div className="text-center text-white">
-                    <p>New here? <span><Link to="/register" className="link-light">Register now</Link></span></p>
                 </div>
             </div>
             <Footer />
