@@ -1,9 +1,9 @@
-export const formatDate = (dateString) => {
+export function formatDate(dateString) {
     const options = { day: '2-digit', month: 'short', year: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-GB', options);
 };
 
-export const formatTime = (time) => {
+export function formatTime(time) {
     const timeMap = {
         '07:00:00': '7am to 8am',
         '08:00:00': '8am to 9am',

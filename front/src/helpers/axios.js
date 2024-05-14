@@ -18,7 +18,7 @@ export async function loginUser(credential) {
 }
 
 export async function getAppointments(userId) {
-    const response = await axios.get("http://localhost:3000/appointments/", userId);
+    const response = await axios.get(`http://localhost:3000/appointments/user/${userId}`);
     return response.data;
 }
 export async function getAppointmentById(id) {

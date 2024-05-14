@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
+import { LoginControl } from '../../components'
 import logo from '../../assets/img/reset-fitness-white.png'
-import LoginControl from '../LoginControl/LoginControl'
 import './NavBar.css'
 
 export default function NavBar() {
@@ -25,13 +25,10 @@ export default function NavBar() {
                     <div className="offcanvas-body">
                         <ul className="navbar-nav nav-underline justify-content-end flex-grow-1 pe-3 desktop-center">
                             <li className="nav-item">
-                                <Link to="/my-appointments" className="nav-link">My Appointments</Link>
+                                <Link to="/about-us" className="nav-link">About Us</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/pricing" className="nav-link">Pricing</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/about-us" className="nav-link">About Us</Link>
                             </li>
                             <LoginControl />
                         </ul>
@@ -39,5 +36,5 @@ export default function NavBar() {
                 </div>
             </div>
         </nav>
-    );
+    )
 }

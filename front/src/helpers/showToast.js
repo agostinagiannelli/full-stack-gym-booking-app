@@ -1,4 +1,4 @@
-export const showToast = ({ text }) => {
+export default function showToast({ text, onClick }) {
     Toastify({
         text,
         duration: 3000,
@@ -10,5 +10,6 @@ export const showToast = ({ text }) => {
             color: "#0051DB",
             background: "#fff",
         },
+        onClick
     }).showToast();
 };

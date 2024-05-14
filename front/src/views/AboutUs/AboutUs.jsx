@@ -1,6 +1,4 @@
-import Title from '../../components/Title/Title'
-import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer'
+import { Title, NavBar, Footer } from '../../components'
 import styles from './AboutUs.module.css'
 import gymImage from '../../assets/img/gym.jpeg'
 
@@ -10,7 +8,7 @@ export default function AboutUs() {
       <NavBar />
       <Title
         title="About Us"
-        link="/register"
+        link="/auth/register"
         linkTitle="Get Started"
       />
       <div className={styles.aboutUsContainer}>

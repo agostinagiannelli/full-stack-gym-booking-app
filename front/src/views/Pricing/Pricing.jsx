@@ -1,6 +1,4 @@
-import Title from '../../components/Title/Title'
-import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer'
+import { Title, NavBar, Footer } from '../../components'
 
 export default function Pricing() {
   return (
@@ -8,7 +6,7 @@ export default function Pricing() {
       <NavBar />
       <Title
         title="Pricing"
-        link="/register"
+        link="/auth/register"
         linkTitle="Get Started"
       />
       <div className="container">

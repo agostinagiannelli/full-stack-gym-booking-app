@@ -1,12 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
-import { loginUser } from '../../helpers/axios'
-import { showToast } from '../../helpers/showToast'
-import Input from '../../components/Input/Input'
-import SubmitButton from '../../components/Buttons/SubmitButton'
-import Title from '../../components/Title/Title'
-import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer'
+import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
+import { loginUser, showToast } from '../../helpers'
 
 export default function Login() {
     const navigate = useNavigate();
@@ -14,7 +9,7 @@ export default function Login() {
     const handleSubmit = (values) => {
         loginUser(values)
             .then((res) => {
-                showToast({ text: "Success! Ready to crush your workout goals? 💥" });
+                showToast({ text: "Success! Ready to crush your goals? 💥" });
                 localStorage.setItem('userId', res.user.id);
                 navigate('/my-appointments');
             })
@@ -30,7 +25,7 @@ export default function Login() {
             <Title
                 title="Log In"
             />
-            <p className="text-center text-white">New here? <span><Link to="/register" className="link-light">Register now</Link></span></p>
+            <p className="text-center text-white">New here? <span><Link to="/auth/register" className="link-light">Register now</Link></span></p>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6">

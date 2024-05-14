@@ -1,4 +1,4 @@
-export function validateAppointment(values) {
+export default function validateAppointment(values) {
     const errors = {};
     if (!values.date) {
         errors.date = `⚠️ Hey, this one's mandatory!`;

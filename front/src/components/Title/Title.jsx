@@ -1,4 +1,4 @@
-import LinkButton from "../Buttons/LinkButton"
+import { LinkButton } from '../../components'
 
 export default function Title({ title, link, linkTitle }) {
     return (
@@ -12,5 +12,5 @@ export default function Title({ title, link, linkTitle }) {
                 </div>
             </div>
         </div>
-    );
+    )
 }

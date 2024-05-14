@@ -1,12 +1,7 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { showToast } from '../../helpers/showToast'
-import { cancelAppointment } from '../../helpers/axios'
-import Title from '../../components/Title/Title'
-import Appointment from '../../components/Appointment/Appointment'
-import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer'
+import { Title, Appointment, NavBar, Footer } from '../../components'
+import { showToast, getAppointments, cancelAppointment } from '../../helpers'
 
 export default function MyAppointments() {
   const [myAppointments, setMyAppointments] = useState([]);
@@ -17,9 +12,9 @@ export default function MyAppointments() {
   }, []);
 
   const refreshAppointments = () => {
-    axios.get(`http://localhost:3000/appointments?userId=${userId}`)
+    getAppointments(userId)
       .then((res) => {
-        setMyAppointments(res.data);
+        setMyAppointments(res);
       })
       .catch((err) => {
         console.error(err.response.data);

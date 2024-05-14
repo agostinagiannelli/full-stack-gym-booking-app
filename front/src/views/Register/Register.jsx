@@ -1,13 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { Formik, Form } from 'formik'
-import { registerUser } from '../../helpers/axios'
-import { validateUser } from '../../helpers/validateUser'
-import { showToast } from '../../helpers/showToast'
-import Input from '../../components/Input/Input'
-import SubmitButton from '../../components/Buttons/SubmitButton'
-import Title from '../../components/Title/Title'
-import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer'
+import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
+import { registerUser, validateUser, showToast } from '../../helpers'
 
 export default function Register() {
     const navigate = useNavigate();
@@ -17,7 +11,7 @@ export default function Register() {
 
         registerUser(values)
             .then((res) => {
-                showToast({ text: "Success! Welcome aboard, fitness enthusiast! 🚀" });
+                showToast({ text: "Welcome aboard, fitness enthusiast! 🚀" });
                 localStorage.setItem('userId', res.newUser.id);
                 navigate('/my-appointments');
             })
@@ -33,7 +27,7 @@ export default function Register() {
             <Title
                 title="Sign Up"
             />
-            <p className="text-center text-white">Already with us? <span><Link to="/login" className="link-light">Log in now</Link></span></p>
+            <p className="text-center text-white">Already with us? <span><Link to="/auth/login" className="link-light">Log in now</Link></span></p>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
@@ -74,8 +68,8 @@ export default function Register() {
                                         name="username"
                                         label="Username"
                                     />
-                                    <div class="row g-3">
-                                        <div class="col">
+                                    <div className="row g-3">
+                                        <div className="col">
                                             <Input
                                                 placeholder="********"
                                                 type="password"
@@ -83,7 +77,7 @@ export default function Register() {
                                                 label="Password"
                                             />
                                         </div>
-                                        <div class="col">
+                                        <div className="col">
                                             <Input
                                                 placeholder="********"
                                                 type="password"

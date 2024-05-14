@@ -1,5 +1,4 @@
-import React from 'react'
-import { formatDate, formatTime } from '../../helpers/format'
+import { formatDate, formatTime } from '../../helpers'
 
 export default function Appointment({ id, date, time, status, handleCancel }) {
   const statusText = status === 'active' ? 'Confirmed 👍' : 'Cancelled 👎';
@@ -24,5 +23,5 @@ export default function Appointment({ id, date, time, status, handleCancel }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

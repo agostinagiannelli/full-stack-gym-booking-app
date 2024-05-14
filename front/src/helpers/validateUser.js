@@ -1,4 +1,4 @@
-export function validateUser(values) {
+export default function validateUser(values) {
     const errors = {};
     if (!values.name) {
         errors.name = `⚠️ Hey, this one's mandatory!`;

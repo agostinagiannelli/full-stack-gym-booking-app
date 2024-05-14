@@ -7,11 +7,13 @@ export default function Input({ placeholder, type, name, label }) {
                 className="form-control"
                 placeholder={placeholder}
                 type={type}
-                name={name} />
+                name={name}
+            />
             <ErrorMessage
+                className="mt-2 errorMessage"
                 name={name}
                 component="div"
-                className="mt-2 errorMessage" />
+            />
             <label htmlFor={name}>{label}</label>
         </div>
     )

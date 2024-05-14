@@ -1,13 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { scheduleAppointment } from '../../helpers/axios'
-import { validateAppointment } from '../../helpers/validateAppointment'
-import { showToast } from '../../helpers/showToast'
-import Input from '../../components/Input/Input'
-import SubmitButton from '../../components/Buttons/SubmitButton'
-import Title from '../../components/Title/Title'
-import NavBar from '../../components/NavBar/NavBar'
-import Footer from '../../components/Footer/Footer'
+import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
+import { scheduleAppointment, validateAppointment, showToast } from '../../helpers'
 
 export default function Schedule() {
     const navigate = useNavigate();

@@ -44,7 +44,7 @@ var getAppointments = function (req, res) { return __awaiter(void 0, void 0, voi
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                userId = req.query.userId;
+                userId = req.params.userId;
                 return [4, (0, appointmentService_1.getAppointmentsService)(userId)];
             case 1:
                 appointments = _a.sent();
