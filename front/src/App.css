@@ -7,6 +7,7 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 body,
@@ -56,10 +57,4 @@ li {
 .card:hover,
 .iconFooter:hover {
   transform: translateY(-3px);
-}
-
-@media (max-width: 991px) {
-  .container {
-    max-width: 390px;
-  }
 }

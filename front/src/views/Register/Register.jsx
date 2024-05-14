@@ -60,13 +60,13 @@ export default function Register() {
                                         placeholder="01/01/1990"
                                         type="date"
                                         name="dateOfBirth"
-                                        label="Date Of Birth"
+                                        label="DOB"
                                     />
                                     <Input
                                         placeholder="11222333"
                                         type="text"
                                         name="identityNumber"
-                                        label="Identity Number"
+                                        label="ID Number"
                                     />
                                     <Input
                                         placeholder="jsmith"
@@ -74,12 +74,24 @@ export default function Register() {
                                         name="username"
                                         label="Username"
                                     />
-                                    <Input
-                                        placeholder="********"
-                                        type="password"
-                                        name="password"
-                                        label="Password"
-                                    />
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <Input
+                                                placeholder="********"
+                                                type="password"
+                                                name="password"
+                                                label="Password"
+                                            />
+                                        </div>
+                                        <div class="col">
+                                            <Input
+                                                placeholder="********"
+                                                type="password"
+                                                name="passwordConfirmation"
+                                                label="Confirm Password"
+                                            />
+                                        </div>
+                                    </div>
                                     <div className="d-flex justify-content-center pt-4 pb-5">
                                         <SubmitButton
                                             disabled={!isValid}

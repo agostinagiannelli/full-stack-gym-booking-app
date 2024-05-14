@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <footer className="footer fixed-bottom">
             <div className="container">
-                <div className="d-flex flex-wrap justify-content-between py-4">
+                <div className="d-flex flex-wrap justify-content-between py-2">
                     <div className="col-md-4 d-flex align-items-center">
                         <p className="mb-3 me-2 mb-md-0 text-white lh-1">Coded with ❤️ by Agostina Giannelli</p>
                     </div>
