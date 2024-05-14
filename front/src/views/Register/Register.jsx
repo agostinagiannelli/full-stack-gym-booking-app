@@ -17,13 +17,13 @@ export default function Register() {
 
         registerUser(values)
             .then((res) => {
-                showToast({ text: "Success! Welcome aboard, fitness enthusiast! 🚀" }, { destination: "" });
+                showToast({ text: "Success! Welcome aboard, fitness enthusiast! 🚀" });
                 localStorage.setItem('userId', res.newUser.id);
                 navigate('/my-appointments');
             })
             .catch((err) => {
-                console.error(err);
-                showToast({ text: "Oops! Email, ID or username already registered 🚫" }, { destination: "" });
+                console.error(err.response.data);
+                showToast({ text: "Oops! Email, ID or username already registered 🚫" });
             })
     };
 

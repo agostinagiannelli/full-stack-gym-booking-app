@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { scheduleAppointment } from '../../helpers/axios'
 import { validateAppointment } from '../../helpers/validateAppointment'
@@ -9,14 +10,17 @@ import NavBar from '../../components/NavBar/NavBar'
 import Footer from '../../components/Footer/Footer'
 
 export default function Schedule() {
+    const navigate = useNavigate();
+
     const handleSubmit = (values) => {
         scheduleAppointment(values)
             .then((res) => {
-                showToast({ text: "Class booked! Ready to sweat? 💦" }, { destination: "" });
+                showToast({ text: "Class booked! Ready to sweat? 💦" });
+                navigate('/my-appointments');
             })
             .catch((err) => {
-                console.error(err);
-                showToast({ text: "Oops! Unable to book class 🚫" }, { destination: "" });
+                console.error(err.response.data);
+                showToast({ text: "Oops! Unable to book class 🚫" });
             })
     };
 

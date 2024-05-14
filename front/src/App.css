@@ -44,12 +44,12 @@ label,
 }
 
 .card,
-img {
+.iconFooter {
   transition: all .3s ease;
 }
 
 .card:hover,
-img:hover {
+.iconFooter:hover {
   transform: translateY(-3px);
 }
 

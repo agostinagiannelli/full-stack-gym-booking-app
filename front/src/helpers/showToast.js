@@ -1,9 +1,7 @@
-export const showToast = ({ text, destination }) => {
+export const showToast = ({ text }) => {
     Toastify({
         text,
         duration: 3000,
-        destination,
-        newWindow: false,
         close: false,
         gravity: "bottom",
         position: "right",

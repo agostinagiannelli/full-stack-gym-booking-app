@@ -14,13 +14,13 @@ export default function Login() {
     const handleSubmit = (values) => {
         loginUser(values)
             .then((res) => {
-                showToast({ text: "Success! Ready to crush your workout goals? 💥" }, { destination: "" });
+                showToast({ text: "Success! Ready to crush your workout goals? 💥" });
                 localStorage.setItem('userId', res.user.id);
                 navigate('/my-appointments');
             })
             .catch((err) => {
-                console.error(err);
-                showToast({ text: "Oops! Invalid username or password 🚫" }, { destination: "" });
+                console.error(err.response.data);
+                showToast({ text: "Oops! Invalid username or password 🚫" });
             })
     };
 

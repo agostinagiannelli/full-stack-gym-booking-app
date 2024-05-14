@@ -5,7 +5,7 @@ import logoutIconWhite from '../../assets/icons/icon-logout-white.png'
 
 export default function LoginControl() {
     const [userId, setUserId] = useState('');
-    
+
     useEffect(() => {
         const storedUserId = localStorage.getItem('userId');
         setUserId(storedUserId);
@@ -23,5 +23,5 @@ export default function LoginControl() {
                 />
             </Link>
         </li>
-    );
+    )
 }
