@@ -12,42 +12,40 @@ export default function Pricing() {
         linkTitle="Get Started"
       />
       <div className="container">
-        <div className="row row-cols-2 row-cols-sm-1 g-3 pb-5">
-          <div className="row">
-            <div className="col d-flex justify-content-center">
-              <div class="card text-center mb-3 shadow-sm px-4">
-                <div class="card-header py-3">
-                  <h4 class="my-0">Basic</h4>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title pricing-card-title">$30<small class="fw-light">/mo</small></h4>
-                  <ul class="list-unstyled mt-3 mb-4">
-                    <li>Access to the gym during regular hours.</li>
-                    <li>Basic equipment usage.</li>
-                    <li>Locker room and shower facilities.</li>
-                  </ul>
-                </div>
+        <div className="row justify-content-center">
+          <div className="col-sm-6">
+            <div className="card text-center mb-3 shadow-sm px-3">
+              <div className="card-header py-3">
+                <h4 className="my-0">Basic Membership</h4>
+              </div>
+              <div className="card-body">
+                <h5 className="card-title pricing-card-title">$30<small className="fw-light">/mo</small></h5>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li>Access to the gym during regular hours.</li>
+                  <li>Basic equipment usage.</li>
+                  <li>Locker room and shower facilities.</li>
+                </ul>
               </div>
             </div>
-            <div className="col d-flex justify-content-center">
-              <div class="card text-center mb-3 shadow-sm px-4">
-                <div class="card-header py-3">
-                  <h4 class="my-0">Premium</h4>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title pricing-card-title">$50<small class="fw-light">/mo</small></h4>
-                  <ul class="list-unstyled mt-3 mb-4">
-                    <li>24/7 gym access.</li>
-                    <li>Unlimited equipment usage.</li>
-                    <li>Premium amenities like sauna and steam room.</li>
-                  </ul>
-                </div>
+          </div>
+          <div className="col-sm-6">
+            <div className="card text-center mb-3 shadow-sm px-3">
+              <div className="card-header py-3">
+                <h4 className="my-0">Premium Membership</h4>
+              </div>
+              <div className="card-body">
+                <h5 className="card-title pricing-card-title">$50<small className="fw-light">/mo</small></h5>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li>24/7 gym access.</li>
+                  <li>Unlimited equipment usage.</li>
+                  <li>Premium amenities like sauna and steam room.</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
       <Footer />
-    </div >
+    </div>
   )
 }

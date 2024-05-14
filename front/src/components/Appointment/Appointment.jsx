@@ -10,7 +10,7 @@ export default function Appointment({ id, date, time, status, handleCancel }) {
   const formattedTime = formatTime(time);
 
   return (
-    <div className="col d-flex justify-content-center">
+    <div className="col mb-4">
       <div className="card text-center mb-3 shadow-sm">
         <div className="card-body">
           <ul className="list-group list-group-flush row-gap-2">

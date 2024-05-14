@@ -39,9 +39,9 @@ export default function MyAppointments() {
   };
 
   const AppointmentList = ({ appointments, handleCancel }) => (
-    <div className="row row-cols-2 row-cols-sm-2 row-cols-md-5 g-3 pb-5">
+    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
       {appointments.map(({ id, time, date, status }) => (
-        <div className="row" key={id}>
+        <div className="col-sm-2" key={id}>
           <Appointment
             id={id}
             time={time}
