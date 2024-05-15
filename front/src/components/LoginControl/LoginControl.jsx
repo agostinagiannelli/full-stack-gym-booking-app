@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeUser } from '../../redux/reducer'
+import { removeUser } from '../../redux/slices'
 import { showToast } from '../../helpers'
 import loginIconWhite from '../../assets/icons/icon-login-white.png'
 import logoutIconWhite from '../../assets/icons/icon-logout-white.png'

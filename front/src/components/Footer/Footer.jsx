@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom'
 import LinkedIn from '../../assets/icons/linkedin-white.png'
 import GitHub from '../../assets/icons/github-white.png'
-import './Footer.css'
 
 export default function Footer() {
     return (
-        <footer className="footer fixed-bottom">
+        <footer className="footer">
             <div className="container">
                 <div className="d-flex flex-wrap justify-content-between py-2">
                     <div className="col-md-4 d-flex align-items-center">
@@ -12,18 +12,26 @@ export default function Footer() {
                     </div>
                     <ul className="col-md-4 d-flex align-items-center justify-content-end list-unstyled">
                         <li className="ms-3">
-                            <a href="https://www.linkedin.com/in/agostinagiannelli" target="_blank">
+                            < Link
+                                to="https://www.linkedin.com/in/agostinagiannelli"
+                                className="text-body-secondary"
+                                target="_blank"
+                                rel="noopener noreferrer" >
                                 <img
                                     src={LinkedIn}
                                     width="100%"
                                     height="24"
-                                    alt="LinkedIn Logo"
+                                    alt="GitHub Logo"
                                     className="iconFooter"
                                 />
-                            </a>
+                            </Link>
                         </li>
                         <li className="ms-3">
-                            <a className="text-body-secondary" href="https://github.com/agostinagiannelli" target="_blank">
+                            < Link
+                                to="https://github.com/agostinagiannelli"
+                                className="text-body-secondary"
+                                target="_blank"
+                                rel="noopener noreferrer" >
                                 <img
                                     src={GitHub}
                                     width="100%"
@@ -31,7 +39,7 @@ export default function Footer() {
                                     alt="GitHub Logo"
                                     className="iconFooter"
                                 />
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>

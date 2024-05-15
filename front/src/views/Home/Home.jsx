@@ -3,9 +3,9 @@ import './Home.css'
 
 export default function Home() {
     return (
-        <div className="bg-image">
+        <div className="bg-image d-flex flex-column min-vh-100">
             <NavBar />
-            <div className="home-content d-flex justify-content-center align-items-center">
+            <div className="d-flex align-items-center flex-fill">
                 <div className="container col-md-8">
                     <div>
                         <h2 className="home-title text-center">Welcome! <br />Get ready to level up your fitness game.</h2>

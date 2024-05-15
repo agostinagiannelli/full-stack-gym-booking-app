@@ -7,14 +7,14 @@ export default function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg">
             <div className="container">
-                <a className="navbar-brand" href="/">
+                < Link to="/" className="navbar-brand" >
                     <img
                         src={logo}
                         width="100%"
                         height="44"
                         alt="Reset Fitness Logo"
                     />
-                </a>
+                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
