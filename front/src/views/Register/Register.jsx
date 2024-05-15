@@ -1,10 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../redux/reducer'
 import { Formik, Form } from 'formik'
 import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
 import { registerUser, validateUser, showToast } from '../../helpers'
 
 export default function Register() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
         values.identityNumber = parseInt(values.identityNumber);
@@ -12,7 +15,7 @@ export default function Register() {
         registerUser(values)
             .then((res) => {
                 showToast({ text: "Welcome aboard, fitness enthusiast! 🚀" });
-                localStorage.setItem('userId', res.newUser.id);
+                dispatch(setUser(res.newUser.id));
                 navigate('/my-appointments');
             })
             .catch((err) => {
@@ -101,3 +104,23 @@ export default function Register() {
         </div>
     )
 }
+
+
+//? Code with localStorage
+
+// const navigate = useNavigate();
+
+// const handleSubmit = (values) => {
+//     values.identityNumber = parseInt(values.identityNumber);
+
+//     registerUser(values)
+//         .then((res) => {
+//             showToast({ text: "Welcome aboard, fitness enthusiast! 🚀" });
+//             localStorage.setItem('userId', res.newUser.id);
+//             navigate('/my-appointments');
+//         })
+//         .catch((err) => {
+//             console.error(err.response.data);
+//             showToast({ text: "Oops! Email, ID or username already registered 🚫" });
+//         })
+// };

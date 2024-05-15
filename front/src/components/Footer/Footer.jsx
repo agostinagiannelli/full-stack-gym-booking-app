@@ -10,7 +10,7 @@ export default function Footer() {
                     <div className="col-md-4 d-flex align-items-center">
                         <p className="mb-3 me-2 mb-md-0 text-white lh-1">Coded with ❤️ by Agostina Giannelli</p>
                     </div>
-                    <ul className="col-md-4 justify-content-end list-unstyled d-flex align-items-center">
+                    <ul className="col-md-4 d-flex align-items-center justify-content-end list-unstyled">
                         <li className="ms-3">
                             <a href="https://www.linkedin.com/in/agostinagiannelli" target="_blank">
                                 <img

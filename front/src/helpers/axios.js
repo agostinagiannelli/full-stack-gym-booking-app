@@ -26,8 +26,7 @@ export async function getAppointmentById(id) {
     return response.data;
 }
 export async function scheduleAppointment(appointment) {
-    const userId = localStorage.getItem('userId');
-    const response = await axios.post(`http://localhost:3000/appointments/schedule`, { ...appointment, userId });
+    const response = await axios.post('http://localhost:3000/appointments/schedule', appointment);
     return response.data;
 }
 export async function cancelAppointment(id) {

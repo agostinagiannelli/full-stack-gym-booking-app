@@ -1,16 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../redux/reducer'
 import { Formik, Form } from 'formik'
 import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
 import { loginUser, showToast } from '../../helpers'
 
 export default function Login() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = (values) => {
         loginUser(values)
             .then((res) => {
                 showToast({ text: "Success! Ready to crush your goals? 💥" });
-                localStorage.setItem('userId', res.user.id);
+                dispatch(setUser(res.user.id));
                 navigate('/my-appointments');
             })
             .catch((err) => {
@@ -72,3 +75,19 @@ export default function Login() {
         </div>
     )
 }
+
+
+//? Code with localStorage
+
+// const handleSubmit = (values) => {
+//     loginUser(values)
+//         .then((res) => {
+//             showToast({ text: "Success! Ready to crush your goals? 💥" });
+//             localStorage.setItem('userId', res.user.id);
+//             navigate('/my-appointments');
+//         })
+//         .catch((err) => {
+//             console.error(err.response.data);
+//             showToast({ text: "Oops! Invalid username or password 🚫" });
+//         })
+// };

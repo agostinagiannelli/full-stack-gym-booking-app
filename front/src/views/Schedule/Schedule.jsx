@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
 import { scheduleAppointment, validateAppointment, showToast } from '../../helpers'
@@ -6,8 +7,12 @@ import { scheduleAppointment, validateAppointment, showToast } from '../../helpe
 export default function Schedule() {
     const navigate = useNavigate();
 
+    const userId = useSelector((state) => state.user.userId);
+
     const handleSubmit = (values) => {
-        scheduleAppointment(values)
+        const appointmentData = { ...values, userId };
+
+        scheduleAppointment(appointmentData)
             .then((res) => {
                 showToast({ text: "Class booked! Ready to sweat? 💦" });
                 navigate('/my-appointments');

@@ -1,23 +1,21 @@
-import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeUser } from '../../redux/reducer'
 import { showToast } from '../../helpers'
 import loginIconWhite from '../../assets/icons/icon-login-white.png'
 import logoutIconWhite from '../../assets/icons/icon-logout-white.png'
 
 export default function LoginControl() {
-    const [userId, setUserId] = useState('');
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        setUserId(localStorage.getItem('userId'));
-    }, []);
+    
+    const userId = useSelector((state) => state.user.userId);
 
     const handleLogout = () => {
         showToast({
             text: "Leaving so soon? Click to confirm your exit 👋",
             onClick: () => {
-                localStorage.removeItem('userId');
-                setUserId('');
+                dispatch(removeUser());
                 navigate('/');
                 showToast({ text: "Logged out successfully! See you next workout 💪" });
             }
@@ -46,3 +44,27 @@ export default function LoginControl() {
         </>
     )
 }
+
+
+//? Code with useState + useEffect + localStorage
+
+// import { useState, useEffect } from 'react'
+// import { Link } from 'react-router-dom'
+
+// const [userId, setUserId] = useState('');
+
+// useEffect(() => {
+//     setUserId(localStorage.getItem('userId'));
+// }, []);
+
+// const handleLogout = () => {
+//     showToast({
+//         text: "Leaving so soon? Click to confirm your exit 👋",
+//         onClick: () => {
+//             localStorage.removeItem('userId');
+//             setUserId('');
+//             navigate('/');
+//             showToast({ text: "Logged out successfully! See you next workout 💪" });
+//         }
+//     });
+// };

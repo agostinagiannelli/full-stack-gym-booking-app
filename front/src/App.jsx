@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { Home, Register, Login, Pricing, AboutUs, MyAppointments, Schedule } from './views'
+import { Home, Register, Login, Pricing, AboutUs, MyAppointments, Schedule, NotFound } from './views'
 import './reset.css'
 import './App.css'
 
@@ -14,7 +14,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/my-appointments" element={<MyAppointments />} />
         <Route path="/schedule" element={<Schedule />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   )

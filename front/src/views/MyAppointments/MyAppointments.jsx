@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setAppointments } from '../../redux/reducer'
 import { Link } from 'react-router-dom'
 import { Title, Appointment, NavBar, Footer } from '../../components'
 import { showToast, getAppointments, cancelAppointment } from '../../helpers'
 
 export default function MyAppointments() {
-  const [myAppointments, setMyAppointments] = useState([]);
-  const userId = localStorage.getItem('userId');
-
+  const dispatch = useDispatch();
+  
+  const myAppointments = useSelector((state) => state.appointments.myAppointments);
+  const userId = useSelector((state) => state.user.userId);
+  
   useEffect(() => {
     refreshAppointments();
   }, []);
@@ -14,7 +18,7 @@ export default function MyAppointments() {
   const refreshAppointments = () => {
     getAppointments(userId)
       .then((res) => {
-        setMyAppointments(res);
+        dispatch(setAppointments(res));
       })
       .catch((err) => {
         console.error(err.response.data);
@@ -45,7 +49,9 @@ export default function MyAppointments() {
             handleCancel={handleCancel}
           />
         </div>
-      ))}
+      ))
+
+      }
     </div>
   );
 
@@ -58,7 +64,7 @@ export default function MyAppointments() {
         linkTitle="Save Your Spot"
       />
       <div className="container">
-        {myAppointments.length === 0 ? (
+        {myAppointments.length === 0 || !userId ? (
           <div className="text-center text-white">
             <p>New here? <span><Link to="/schedule" className="link-light">Book your first class</Link></span></p>
           </div>
@@ -68,5 +74,39 @@ export default function MyAppointments() {
       </div>
       <Footer />
     </div>
-  );
+  )
 }
+
+
+//? Code with useState + useEffect
+
+// import { useState, useEffect } from 'react'
+
+// const [myAppointments, setMyAppointments] = useState([]);
+// const userId = localStorage.getItem('userId');
+
+// useEffect(() => {
+//   refreshAppointments();
+// }, []);
+
+// const refreshAppointments = () => {
+//   getAppointments(userId)
+//     .then((res) => {
+//       setMyAppointments(res);
+//     })
+//     .catch((err) => {
+//       console.error(err.response.data);
+//     });
+// };
+
+// const handleCancel = (id) => {
+//   cancelAppointment(id)
+//     .then(() => {
+//       showToast({ text: "Appointment cancelled successfully ✅" });
+//       refreshAppointments();
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//       showToast({ text: "Oops! Unable to cancel appointment 🚫" });
+//     });
+// };
