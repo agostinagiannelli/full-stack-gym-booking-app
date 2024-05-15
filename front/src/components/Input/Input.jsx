@@ -8,6 +8,7 @@ export default function Input({ placeholder, type, name, label }) {
                 placeholder={placeholder}
                 type={type}
                 name={name}
+                id={name}
             />
             <ErrorMessage
                 className="mt-2 errorMessage"

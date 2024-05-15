@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
@@ -29,7 +29,7 @@ export default function Schedule() {
             <Title
                 title="Save Your Spot"
             />
-            <div className="d-flex flex-fill">
+            {userId ? (<div className="d-flex flex-fill">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6">
@@ -50,7 +50,8 @@ export default function Schedule() {
                                             <Field
                                                 className="form-select"
                                                 as="select"
-                                                name="time">
+                                                name="time"
+                                                id="time">
                                                 <option value="07:00:00">7am to 8am</option>
                                                 <option value="08:00:00">8am to 9am</option>
                                                 <option value="17:00:00">5pm to 6pm</option>
@@ -76,6 +77,15 @@ export default function Schedule() {
                     </div>
                 </div>
             </div>
+            ) : (
+                <div className="d-flex flex-fill">
+                    <div className="container">
+                        <div className="text-center text-white">
+                            <p>Ready to smash your appointments? <span><Link to="/auth/login" className="link-light">Sign in now!</Link></span></p>
+                        </div>
+                    </div>
+                </div>
+            )}
             <Footer />
         </div>
     )

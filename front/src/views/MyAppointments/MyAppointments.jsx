@@ -63,7 +63,7 @@ export default function MyAppointments() {
         link="/schedule"
         linkTitle="Save Your Spot"
       />
-      <div className="d-flex flex-fill">
+      {userId ? (<div className="d-flex flex-fill">
         <div className="container">
           {myAppointments.length === 0 ? (
             <div className="text-center text-white">
@@ -74,6 +74,15 @@ export default function MyAppointments() {
           )}
         </div>
       </div>
+      ) : (
+        <div className="d-flex flex-fill">
+          <div className="container">
+            <div className="text-center text-white">
+              <p>Ready to smash your appointments? <span><Link to="/auth/login" className="link-light">Sign in now!</Link></span></p>
+            </div>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   )

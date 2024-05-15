@@ -3,48 +3,73 @@
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.aboutUsFlex {
+    display: flex;
+    flex-grow: 1;
 }
 
 .aboutUsContainer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    max-width: 1140px;
-    margin: 0 auto;
+    flex-direction: column;
+    justify-content: start;
     text-align: center;
-}
-
-.imageContainer {
-    flex: 1;
-}
-
-.gymImage {
     width: 100%;
-    transition: all .3s ease;
-    border-radius: 0.375rem;
-}
-
-.gymImage:hover {
-    transform: translateY(-3px);
-}
-
-.textContainer {
-    flex: 2;
-    margin-left: 50px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .paragraph {
-    color: white;
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 20px;
 }
 
+.cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    color: #0051DB;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all .3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.card h4 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
 @media (max-width: 768px) {
     .aboutUsContainer {
         flex-direction: column;
-        text-align: center;
+        max-width: 720px;
     }
 
     .textContainer {
@@ -52,8 +77,42 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-
+    
     .imageContainer {
         margin-top: 20px;
+    }
+    
+    .cardsContainer {
+        margin-top: 0;
+        justify-content: center;
+    }
+    
+    .card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 576px) {
+    .aboutUsContainer {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 992px) {
+    .aboutUsContainer {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .aboutUsContainer {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .aboutUsContainer {
+        max-width: 1320px;
     }
 }

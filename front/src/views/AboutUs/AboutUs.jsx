@@ -1,6 +1,8 @@
 import { Title, NavBar, Footer } from '../../components'
 import styles from './AboutUs.module.css'
-import gymImage from '../../assets/img/gym.jpeg'
+import iconGym from '../../assets/icons/icon-gym.png'
+import iconSchedule from '../../assets/icons/icon-schedule.png'
+import iconShower from '../../assets/icons/icon-shower.png'
 
 export default function AboutUs() {
   return (
@@ -11,23 +13,36 @@ export default function AboutUs() {
         link="/auth/register"
         linkTitle="Get Started"
       />
-      <div className={styles.aboutUsContainer}>
-        <div className={styles.imageContainer}>
-          <img src={gymImage} alt="Gym" className={styles.gymImage} />
-        </div>
-        <div className={styles.textContainer}>
-          <p className={styles.paragraph}>
-            <b>Hours of Operation:</b> Monday to Friday from 7am to 9am & 5pm to 9pm
-          </p>
-          <p className={styles.paragraph}>
-            Welcome to our fitness community! Whether you're a seasoned athlete or just starting your fitness journey, we have something for everyone.
-          </p>
-          <p className={styles.paragraph}>
-            Our experienced trainers and friendly staff are here to support you every step of the way. We offer a wide range of classes and programs to help you achieve your fitness goals.
-          </p>
-          <p className={styles.paragraph}>
-            Join us today and start your journey towards a healthier, happier you. <b>Let's make every rep count!</b>
-          </p>
+      <div className={styles.aboutUsFlex}>
+        <div className={styles.aboutUsContainer}>
+          <div className={styles.textContainer}>
+            <p className={styles.paragraph}>
+              Welcome to our fitness community! We offer CrossFit, Yoga, Calisthenics, and Pilates - a holistic approach to fitness.
+            </p>
+            <p className={styles.paragraph}>
+              Our experienced instructors and state-of-the-art facility create a supportive environment for all levels.
+            </p>
+            <p className={styles.paragraph}>
+              Join us today and transform your fitness journey! 💪
+            </p>
+            <p className={styles.paragraph}>
+              <b>Hours of Operation:</b> Monday to Friday from 7am to 9am & 5pm to 9pm
+            </p>
+          </div>
+          <div className={styles.cardsContainer}>
+            <div className={styles.card}>
+              <img src={iconGym} alt="Gym" />
+              <h4>24/7 Gym Access</h4>
+            </div>
+            <div className={styles.card}>
+              <img src={iconSchedule} alt="Schedule" />
+              <h4>Easy Class Scheduling</h4>
+            </div>
+            <div className={styles.card}>
+              <img src={iconShower} alt="Shower" />
+              <h4>Shower Facilities</h4>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
