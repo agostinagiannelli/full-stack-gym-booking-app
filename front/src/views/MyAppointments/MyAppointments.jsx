@@ -78,7 +78,7 @@ export default function MyAppointments() {
         <div className="d-flex flex-fill">
           <div className="container">
             <div className="text-center text-white">
-              <p>Ready to smash your appointments? <span><Link to="/auth/login" className="link-light">Sign in now!</Link></span></p>
+              <p>Ready to smash your appointments? <span><Link to="/auth/login" className="link-light">Log in now!</Link></span></p>
             </div>
           </div>
         </div>
