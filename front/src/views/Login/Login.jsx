@@ -13,13 +13,17 @@ export default function Login() {
         loginUser(values)
             .then((res) => {
                 showToast({ text: "Success! Ready to crush your goals? 💥" });
-                dispatch(setUser({ userId: res.user.id, userName: res.user.name }));
+                dispatch(setUser({ user: res.user }));
                 navigate('/my-appointments');
             })
             .catch((err) => {
                 console.error(err.response.data);
                 showToast({ text: "Oops! Invalid username or password 🚫" });
             })
+    };
+
+    const isFormEmpty = (values) => {
+        return !values.username || !values.password;
     };
 
     return (
@@ -47,7 +51,7 @@ export default function Login() {
                                 }}
                                 onSubmit={handleSubmit}
                             >
-                                {({ isValid }) => (
+                                {({ values, isValid }) => (
                                     <Form>
                                         <Input
                                             placeholder="jsmith"
@@ -63,7 +67,7 @@ export default function Login() {
                                         />
                                         <div className="d-flex justify-content-center pt-4 pb-5">
                                             <SubmitButton
-                                                disabled={!isValid}
+                                                disabled={!isValid || isFormEmpty(values)}
                                                 text="Submit" />
                                         </div>
                                     </Form>

@@ -5,12 +5,12 @@ export function formatDate(dateString) {
 
 export function formatTime(time) {
     const timeMap = {
-        '07:00:00': '7am to 8am',
-        '08:00:00': '8am to 9am',
-        '17:00:00': '5pm to 6pm',
-        '18:00:00': '6pm to 7pm',
-        '19:00:00': '7pm to 8pm',
-        '20:00:00': '8pm to 9pm',
+        '07:00:00': '7am Yoga',
+        '08:00:00': '8am Crossfit',
+        '17:00:00': '5pm Pilates',
+        '18:00:00': '6pm Calisthenics',
+        '19:00:00': '7pm Yoga',
+        '20:00:00': '8pm Crossfit',
     };
     return timeMap[time] || 'Unknown';
 };

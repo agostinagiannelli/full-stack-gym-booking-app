@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { LoginControl } from '../../components'
+import { LoginNavBar } from '../../components'
 import logo from '../../assets/img/reset-fitness-white.png'
 import './NavBar.css'
 
@@ -30,7 +30,7 @@ export default function NavBar() {
                             <li className="nav-item">
                                 <Link to="/pricing" className="nav-link">Pricing</Link>
                             </li>
-                            <LoginControl />
+                            <LoginNavBar />
                         </ul>
                     </div>
                 </div>

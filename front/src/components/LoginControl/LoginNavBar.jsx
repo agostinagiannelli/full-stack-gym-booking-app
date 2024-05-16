@@ -5,29 +5,34 @@ import { showToast } from '../../helpers'
 import loginIconWhite from '../../assets/icons/icon-login-white.png'
 import logoutIconWhite from '../../assets/icons/icon-logout-white.png'
 
-export default function LoginControl() {
+export default function LoginNavBar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const userId = useSelector((state) => state.user.userId);
 
     const handleLogout = () => {
         showToast({
-            text: "Leaving so soon? Click to confirm your exit 👋",
+            text: "Leaving so soon? Click to confirm 👋",
             onClick: () => {
                 dispatch(removeUser());
                 navigate('/');
                 showToast({ text: "Logged out successfully! See you next workout 💪" });
             }
-        });
+        })
     };
 
     return (
         <>
             {userId && (
-                <li className="nav-item">
-                    <Link to="/my-appointments" className="nav-link">My Appointments</Link>
-                </li>
+                <>
+                    <li className="nav-item">
+                        <Link to="/my-appointments" className="nav-link">My Appointments</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/profile" className="nav-link">Profile</Link>
+                    </li>
+                </>
             )}
             <li className="nav-item">
                 <Link to={userId ? null : "/auth/login"} className="nav-link">

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAppointments } from '../../redux/slices'
 import { Link } from 'react-router-dom'
-import { Title, Appointment, NavBar, Footer } from '../../components'
+import { Title, AppointmentList, Logout, NavBar, Footer } from '../../components'
 import { showToast, getAppointments, cancelAppointment } from '../../helpers'
 
 export default function MyAppointments() {
@@ -12,8 +12,10 @@ export default function MyAppointments() {
   const userId = useSelector((state) => state.user.userId);
 
   useEffect(() => {
-    refreshAppointments();
-  }, []);
+    if (userId) {
+      refreshAppointments();
+    }
+  }, [userId]);
 
   const refreshAppointments = () => {
     getAppointments(userId)
@@ -26,34 +28,21 @@ export default function MyAppointments() {
   };
 
   const handleCancel = (id) => {
-    cancelAppointment(id)
-      .then(() => {
-        showToast({ text: "Appointment cancelled successfully ✅" });
-        refreshAppointments();
-      })
-      .catch((err) => {
-        console.error(err);
-        showToast({ text: "Oops! Unable to cancel appointment 🚫" });
-      });
-  };
-
-  const AppointmentList = ({ appointments, handleCancel }) => (
-    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
-      {appointments.map(({ id, time, date, status }) => (
-        <div className="col-sm-2" key={id}>
-          <Appointment
-            id={id}
-            time={time}
-            date={date}
-            status={status}
-            handleCancel={handleCancel}
-          />
-        </div>
-      ))
-
+    showToast({
+      text: "Sure you want to cancel? Click to confirm 💪",
+      onClick: () => {
+        cancelAppointment(id)
+          .then(() => {
+            showToast({ text: "Appointment cancelled successfully ✅" });
+            refreshAppointments();
+          })
+          .catch((err) => {
+            console.error(err);
+            showToast({ text: "Oops! Unable to cancel appointment 🚫" });
+          });
       }
-    </div>
-  );
+    })
+  };
 
   return (
     <div className="bg-color d-flex flex-column min-vh-100">
@@ -75,13 +64,7 @@ export default function MyAppointments() {
         </div>
       </div>
       ) : (
-        <div className="d-flex flex-fill">
-          <div className="container">
-            <div className="text-center text-white">
-              <p>Ready to smash your appointments? <span><Link to="/auth/login" className="link-light">Log in now!</Link></span></p>
-            </div>
-          </div>
-        </div>
+        <Logout />
       )}
       <Footer />
     </div>

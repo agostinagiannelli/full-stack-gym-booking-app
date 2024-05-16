@@ -31,18 +31,6 @@
     margin-bottom: 20px;
 }
 
-.classList {
-    list-style-type: none;
-    padding-left: 0;
-    line-height: 1;
-    margin-top: 10px
-}
-
-.classList li {
-    color: white;
-    margin-bottom: 10px;
-}
-
 .cardsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -74,6 +62,17 @@
 .card h4 {
     font-size: 24px;
     font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card li {
+    font-size: 16px;
     margin-bottom: 10px;
 }
 
@@ -88,16 +87,16 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-
+    
     .imageContainer {
         margin-top: 20px;
     }
-
+    
     .cardsContainer {
         margin-top: 0;
         justify-content: center;
     }
-
+    
     .card {
         width: 100vw;
         margin-bottom: 20px;

@@ -1,7 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
+import { Input, SubmitButton, Title, Logout, NavBar, Footer } from '../../components'
 import { scheduleAppointment, validateAppointment, showToast } from '../../helpers'
 
 export default function Schedule() {
@@ -23,6 +23,10 @@ export default function Schedule() {
             })
     };
 
+    const isFormEmpty = (values) => {
+        return !values.date || !values.time;
+    };
+
     return (
         <div className="bg-image d-flex flex-column min-vh-100">
             <NavBar />
@@ -38,7 +42,7 @@ export default function Schedule() {
                                 validate={validateAppointment}
                                 onSubmit={handleSubmit}
                             >
-                                {({ isValid }) => (
+                                {({ values, isValid }) => (
                                     <Form>
                                         <Input
                                             placeholder="01/01/2025"
@@ -52,12 +56,13 @@ export default function Schedule() {
                                                 as="select"
                                                 name="time"
                                                 id="time">
-                                                <option value="07:00:00">7am to 8am</option>
-                                                <option value="08:00:00">8am to 9am</option>
-                                                <option value="17:00:00">5pm to 6pm</option>
-                                                <option value="18:00:00">6pm to 7pm</option>
-                                                <option value="19:00:00">7pm to 8pm</option>
-                                                <option value="20:00:00">8pm to 9pm</option>
+                                                <option value="">Select a class</option>
+                                                <option value="07:00:00">7am Yoga</option>
+                                                <option value="08:00:00">8am Crossfit</option>
+                                                <option value="17:00:00">5pm Pilates</option>
+                                                <option value="18:00:00">6pm Calisthenics</option>
+                                                <option value="19:00:00">7pm Yoga</option>
+                                                <option value="20:00:00">8pm Crossfit</option>
                                             </Field>
                                             <ErrorMessage
                                                 name="time"
@@ -67,7 +72,7 @@ export default function Schedule() {
                                         </div>
                                         <div className="d-flex justify-content-center pt-4 pb-5">
                                             <SubmitButton
-                                                disabled={!isValid}
+                                                disabled={!isValid || isFormEmpty(values)}
                                                 text="Book Now" />
                                         </div>
                                     </Form>
@@ -78,13 +83,7 @@ export default function Schedule() {
                 </div>
             </div>
             ) : (
-                <div className="d-flex flex-fill">
-                    <div className="container">
-                        <div className="text-center text-white">
-                            <p>Ready to smash your appointments? <span><Link to="/auth/login" className="link-light">Log in now!</Link></span></p>
-                        </div>
-                    </div>
-                </div>
+                <Logout />
             )}
             <Footer />
         </div>

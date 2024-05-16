@@ -15,13 +15,17 @@ export default function Register() {
         registerUser(values)
             .then((res) => {
                 showToast({ text: "Welcome aboard, fitness enthusiast! 🚀" });
-                dispatch(setUser({ userId: res.newUser.id, userName: res.newUser.name }));
+                dispatch(setUser({ user: res.newUser }));
                 navigate('/my-appointments');
             })
             .catch((err) => {
                 console.error(err.response.data);
                 showToast({ text: "Oops! Email, ID or username already registered 🚫" });
             })
+    };
+
+    const isFormEmpty = (values) => {
+        return !values.name || !values.email || !values.dateOfBirth || !values.identityNumber || !values.username || !values.password || !values.passwordConfirmation;
     };
 
     return (
@@ -40,7 +44,7 @@ export default function Register() {
                                 validate={validateUser}
                                 onSubmit={handleSubmit}
                             >
-                                {({ isValid }) => (
+                                {({ values, isValid }) => (
                                     <Form>
                                         <Input
                                             placeholder="John Smith"
@@ -92,7 +96,7 @@ export default function Register() {
                                         </div>
                                         <div className="d-flex justify-content-center pt-4 pb-5">
                                             <SubmitButton
-                                                disabled={!isValid}
+                                                disabled={!isValid || isFormEmpty(values)}
                                                 text="Submit" />
                                         </div>
                                     </Form>

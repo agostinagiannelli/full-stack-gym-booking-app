@@ -8,8 +8,8 @@ export const userSlice = createSlice({
     },
     reducers: {
         setUser: (state, action) => {
-            state.userId = action.payload.userId,
-            state.userName = action.payload.userName
+            state.userId = action.payload.user.id,
+            state.userName = action.payload.user.name
         },
         removeUser: (state) => {
             state.userId = null,

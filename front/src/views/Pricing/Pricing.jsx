@@ -1,51 +1,42 @@
 import { Title, NavBar, Footer } from '../../components'
+import styles from './Pricing.module.css'
+import iconBasic from '../../assets/icons/icon-basic.png'
+import iconPremium from '../../assets/icons/icon-premium.png'
 
-export default function Pricing() {
-  return (
-    <div className="bg-image d-flex flex-column min-vh-100">
-      <NavBar />
-      <Title
-        title="Pricing"
-        link="/auth/register"
-        linkTitle="Get Started"
-      />
-      <div className="d-flex flex-fill">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-sm-6">
-              <div className="card text-center mb-3 shadow-sm px-3">
-                <div className="card-header py-3">
-                  <h4 className="my-0">Basic Membership</h4>
+export default function Pricing2() {
+    return (
+        <div className={styles.background}>
+            <NavBar />
+            <Title
+                title="Pricing"
+                link="/auth/register"
+                linkTitle="Get Started"
+            />
+            <div className={styles.flex}>
+                <div className={styles.container}>
+                    <div className={styles.cardsContainer}>
+                        <div className={styles.card}>
+                            <img src={iconBasic} alt="Gym" />
+                            <h4>Basic Membership</h4>
+                            <ul>
+                                <li>Access during regular hours.</li>
+                                <li>Basic equipment usage.</li>
+                                <li>Locker room and shower facilities.</li>
+                            </ul>
+                        </div>
+                        <div className={styles.card}>
+                            <img src={iconPremium} alt="Schedule" />
+                            <h4>Premium Membership</h4>
+                            <ul>
+                                <li>24/7 gym access.</li>
+                                <li>Unlimited equipment usage.</li>
+                                <li>+ Premium amenities like sauna.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div className="card-body">
-                  <h5 className="card-title pricing-card-title">$30<small className="fw-light">/mo</small></h5>
-                  <ul className="list-unstyled mt-3 mb-4">
-                    <li>Access to the gym during regular hours.</li>
-                    <li>Basic equipment usage.</li>
-                    <li>Locker room and shower facilities.</li>
-                  </ul>
-                </div>
-              </div>
             </div>
-            <div className="col-sm-6">
-              <div className="card text-center mb-3 shadow-sm px-3">
-                <div className="card-header py-3">
-                  <h4 className="my-0">Premium Membership</h4>
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title pricing-card-title">$50<small className="fw-light">/mo</small></h5>
-                  <ul className="list-unstyled mt-3 mb-4">
-                    <li>24/7 gym access.</li>
-                    <li>Unlimited equipment usage.</li>
-                    <li>Premium amenities like sauna and steam room.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+            <Footer />
         </div>
-      </div>
-      <Footer />
-    </div>
-  )
+    )
 }

@@ -13,21 +13,26 @@ export default function AboutUs() {
         link="/auth/register"
         linkTitle="Get Started"
       />
-      <div className={styles.aboutUsFlex}>
-        <div className={styles.aboutUsContainer}>
+      <div className={styles.flex}>
+        <div className={styles.container}>
           <div className={styles.textContainer}>
             <p className={styles.paragraph}>
-              Welcome to our fitness community! We offer CrossFit, Yoga, Calisthenics, and Pilates - a holistic approach to fitness.
-            </p>
-            <p className={styles.paragraph}>
-              Our experienced instructors and state-of-the-art facility create a supportive environment for all levels.
+              Welcome to our fitness community! We offer CrossFit, Yoga, Calisthenics, and Pilates - a holistic approach to fitness. Our experienced instructors and state-of-the-art facility create a supportive environment for all levels.
             </p>
             <p className={styles.paragraph}>
               Join us today and transform your fitness journey! 💪
             </p>
             <p className={styles.paragraph}>
-              <b>Hours of Operation:</b> Monday to Friday from 7am to 9am & 5pm to 9pm
+              <b>Available classes:</b>
             </p>
+            <ul className={styles.classList}>
+              <li>7am Yoga</li>
+              <li>8am Crossfit</li>
+              <li>5pm Pilates</li>
+              <li>6pm Calisthenics</li>
+              <li>7pm Yoga</li>
+              <li>8pm Crossfit</li>
+            </ul>
           </div>
           <div className={styles.cardsContainer}>
             <div className={styles.card}>
