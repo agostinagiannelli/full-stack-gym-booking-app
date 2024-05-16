@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import { Input, SubmitButton, Title, Logout, NavBar, Footer } from '../../components'
-import { scheduleAppointment, validateAppointment, showToast } from '../../helpers'
+import { validateAppointment, showToast } from '../../helpers'
+import { scheduleAppointment } from '../../services/apiServices'
 
 export default function Schedule() {
     const navigate = useNavigate();

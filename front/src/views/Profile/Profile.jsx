@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../../redux/slices'
+import { getUserById } from '../../services/apiServices'
 import { Title, Logout, NavBar, Footer } from '../../components'
-import { formatDate, showToast, getUserById } from '../../helpers'
+import { formatDate, showToast } from '../../helpers'
 
 export default function Profile() {
     const [user, setUser] = useState(null);

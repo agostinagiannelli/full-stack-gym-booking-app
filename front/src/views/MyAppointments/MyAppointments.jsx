@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAppointments } from '../../redux/slices'
-import { Link } from 'react-router-dom'
+import { getUserById, cancelAppointment } from '../../services/apiServices'
 import { Title, AppointmentList, Logout, NavBar, Footer } from '../../components'
-import { showToast, getUserById, cancelAppointment } from '../../helpers'
+import { showToast } from '../../helpers'
 
 export default function MyAppointments() {
   const [sortedAppointments, setSortedAppointments] = useState([]);

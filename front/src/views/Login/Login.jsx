@@ -2,8 +2,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../redux/slices'
 import { Formik, Form } from 'formik'
+import { loginUser } from '../../services/apiServices'
 import { Input, SubmitButton, Title, NavBar, Footer } from '../../components'
-import { loginUser, showToast } from '../../helpers'
+import { showToast } from '../../helpers'
 
 export default function Login() {
     const navigate = useNavigate();
