@@ -4,7 +4,7 @@ import GitHub from '../../assets/icons/github-white.png'
 
 export default function Footer() {
     return (
-        <footer className="footer">
+        <footer className="footer mt-4">
             <div className="container">
                 <div className="d-flex flex-wrap justify-content-between py-2">
                     <div className="col-md-4 d-flex align-items-center">

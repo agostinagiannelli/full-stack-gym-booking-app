@@ -25,6 +25,11 @@
     margin-left: auto;
 }
 
+.textContainer {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 .paragraph {
     font-size: 18px;
     line-height: 1.5;
@@ -85,6 +90,7 @@
 
     .textContainer {
         margin-left: 0;
+        margin-right: 0;
         margin-top: 20px;
         margin-bottom: 20px;
     }
