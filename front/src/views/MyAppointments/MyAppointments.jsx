@@ -81,7 +81,7 @@ export default function MyAppointments() {
   )
 }
 
-//? Code with useState + useEffect
+//? Code with localStorage
 
 // import { useState, useEffect } from 'react'
 

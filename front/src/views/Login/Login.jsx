@@ -81,19 +81,3 @@ export default function Login() {
         </div>
     )
 }
-
-
-//? Code with localStorage
-
-// const handleSubmit = (values) => {
-//     loginUser(values)
-//         .then((res) => {
-//             showToast({ text: "Success! Ready to crush your goals? 💥" });
-//             localStorage.setItem('userId', res.user.id);
-//             navigate('/my-appointments');
-//         })
-//         .catch((err) => {
-//             console.error(err.response.data);
-//             showToast({ text: "Oops! Invalid username or password 🚫" });
-//         })
-// };

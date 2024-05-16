@@ -110,23 +110,3 @@ export default function Register() {
         </div>
     )
 }
-
-
-//? Code with localStorage
-
-// const navigate = useNavigate();
-
-// const handleSubmit = (values) => {
-//     values.identityNumber = parseInt(values.identityNumber);
-
-//     registerUser(values)
-//         .then((res) => {
-//             showToast({ text: "Welcome aboard, fitness enthusiast! 🚀" });
-//             localStorage.setItem('userId', res.newUser.id);
-//             navigate('/my-appointments');
-//         })
-//         .catch((err) => {
-//             console.error(err.response.data);
-//             showToast({ text: "Oops! Email, ID or username already registered 🚫" });
-//         })
-// };
