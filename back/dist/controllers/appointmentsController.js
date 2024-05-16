@@ -39,13 +39,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.cancelAppointment = exports.scheduleAppointment = exports.getAppointmentById = exports.getAppointments = void 0;
 var appointmentService_1 = require("../services/appointmentService");
 var getAppointments = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var userId, appointments, error_1;
+    var appointments, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                userId = req.params.userId;
-                return [4, (0, appointmentService_1.getAppointmentsService)(userId)];
+                return [4, (0, appointmentService_1.getAppointmentsService)()];
             case 1:
                 appointments = _a.sent();
                 res.status(200).json(appointments);

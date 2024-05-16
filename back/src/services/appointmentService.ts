@@ -2,10 +2,9 @@ import { appointmentRepository, userRepository } from "../config/data-source";
 import { Appointment, Status } from "../entities/Appointment";
 import { AppointmentDto } from "../dtos/AppointmentDto";
 
-export const getAppointmentsService = async (userId: string): Promise<Appointment[]> => {
+export const getAppointmentsService = async (): Promise<Appointment[]> => {
     try {
         const appointments: Appointment[] = await appointmentRepository.find({
-            where: userId ? { user: { id: Number(userId) } } : {},
             relations: ["user"]
         });
         if (appointments.length === 0) throw new Error("No appointments found");

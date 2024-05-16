@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setAppointments } from '../../redux/slices'
 import { Link } from 'react-router-dom'
 import { Title, AppointmentList, Logout, NavBar, Footer } from '../../components'
-import { showToast, getAppointments, cancelAppointment } from '../../helpers'
+import { showToast, getUserById, cancelAppointment } from '../../helpers'
 
 export default function MyAppointments() {
   const [sortedAppointments, setSortedAppointments] = useState([]);
@@ -23,9 +23,9 @@ export default function MyAppointments() {
   }, [myAppointments]);
 
   const refreshAppointments = () => {
-    getAppointments(userId)
+    getUserById(userId)
       .then((res) => {
-        dispatch(setAppointments(res));
+        dispatch(setAppointments(res.appointments));
       })
       .catch((err) => {
         console.error(err.response.data);

@@ -5,8 +5,7 @@ import { AppointmentDto } from "../dtos/AppointmentDto";
 
 export const getAppointments = async (req: Request, res: Response) => {
     try {
-        const { userId } = req.params;
-        const appointments: Appointment[] = await getAppointmentsService(userId as string);
+        const appointments: Appointment[] = await getAppointmentsService();
         res.status(200).json(appointments);
     } catch (error: any) {
         res.status(404).json({ message: error.message });

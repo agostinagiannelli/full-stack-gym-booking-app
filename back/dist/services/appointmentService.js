@@ -50,14 +50,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.cancelAppointmentService = exports.scheduleAppointmentService = exports.getAppointmentByIdService = exports.getAppointmentsService = void 0;
 var data_source_1 = require("../config/data-source");
 var Appointment_1 = require("../entities/Appointment");
-var getAppointmentsService = function (userId) { return __awaiter(void 0, void 0, void 0, function () {
+var getAppointmentsService = function () { return __awaiter(void 0, void 0, void 0, function () {
     var appointments, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 return [4, data_source_1.appointmentRepository.find({
-                        where: userId ? { user: { id: Number(userId) } } : {},
                         relations: ["user"]
                     })];
             case 1:
