@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setAppointments } from '../../redux/slices'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,7 @@ import { Title, AppointmentList, Logout, NavBar, Footer } from '../../components
 import { showToast, getAppointments, cancelAppointment } from '../../helpers'
 
 export default function MyAppointments() {
+  const [sortedAppointments, setSortedAppointments] = useState([]);
   const dispatch = useDispatch();
 
   const myAppointments = useSelector((state) => state.appointments.myAppointments);
@@ -17,6 +18,10 @@ export default function MyAppointments() {
     }
   }, [userId]);
 
+  useEffect(() => {
+    sortAppointmentsByDate();
+  }, [myAppointments]);
+
   const refreshAppointments = () => {
     getAppointments(userId)
       .then((res) => {
@@ -25,6 +30,11 @@ export default function MyAppointments() {
       .catch((err) => {
         console.error(err.response.data);
       });
+  };
+
+  const sortAppointmentsByDate = () => {
+    const sorted = [...myAppointments].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setSortedAppointments(sorted);
   };
 
   const handleCancel = (id) => {
@@ -54,12 +64,12 @@ export default function MyAppointments() {
       />
       {userId ? (<div className="d-flex flex-fill">
         <div className="container">
-          {myAppointments.length === 0 ? (
+          {sortedAppointments.length === 0 ? (
             <div className="text-center text-white">
               <p>New here? <span><Link to="/schedule" className="link-light">Book your first class</Link></span></p>
             </div>
           ) : (
-            <AppointmentList appointments={myAppointments} handleCancel={handleCancel} />
+            <AppointmentList appointments={sortedAppointments} handleCancel={handleCancel} />
           )}
         </div>
       </div>
@@ -70,7 +80,6 @@ export default function MyAppointments() {
     </div>
   )
 }
-
 
 //? Code with useState + useEffect
 
