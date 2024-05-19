@@ -1,8 +1,8 @@
-# Appointment Management App
+# Appointment Management Full Stack App
 
 This is a full stack application for managing appointments. Users can schedule appointments on specific dates and times. Authentication is required for booking appointments; anonymous or invited guests cannot schedule appointments.
 
-## Technologies Used
+## Technologies
 
 * Frontend: JS, React
 * Backend: Typescript, Express, TypeORM, PostgreSQL
@@ -11,7 +11,7 @@ This is a full stack application for managing appointments. Users can schedule a
 
 This application provides a user-friendly interface for managing appointments. Users can register and log in to their accounts to schedule appointments for their desired date and time. The application ensures that only authenticated users can book appointments, maintaining privacy and security.
 
-## 🛠 Instructions
+## Instructions
 
 To use the app, follow these steps:
 
@@ -63,8 +63,6 @@ The frontend will run on `http://localhost:5173` by default.
 
 10. Navigate to the appointment booking section, select a date and time, and schedule your appointment.
 
-Enjoy managing your appointments hassle-free with our application!
-
-## 📄 License
+## License
 
 Agostina Giannelli (https://github.com/agostinagiannelli)
